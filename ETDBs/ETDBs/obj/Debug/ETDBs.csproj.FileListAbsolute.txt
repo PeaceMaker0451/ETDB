@@ -1,0 +1,15 @@
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\bin\Debug\ETDBs.exe.config
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\bin\Debug\ETDBs.exe
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\bin\Debug\ETDBs.pdb
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\bin\Debug\Newtonsoft.Json.dll
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\bin\Debug\Newtonsoft.Json.xml
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.csproj.AssemblyReference.cache
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.Properties.Resources.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.csproj.GenerateResource.cache
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.csproj.CoreCompileInputs.cache
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.csproj.Up2Date
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.exe
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.pdb
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.SplashScreen.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EmployeesManagement.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.AddNewEmployee.resources

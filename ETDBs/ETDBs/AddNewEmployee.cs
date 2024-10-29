@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ETDBs
 {
-    public partial class Form1 : Form
+    public partial class AddNewEmployee : Form
     {
-        public Form1()
+        public AddNewEmployee()
         {
             InitializeComponent();
         }
