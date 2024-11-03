@@ -12,4 +12,6 @@ D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.exe
 D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.pdb
 D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.SplashScreen.resources
 D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EmployeesManagement.resources
-D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.AddNewEmployee.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EditEmployee.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\InputDialog.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EditJobTitles.resources

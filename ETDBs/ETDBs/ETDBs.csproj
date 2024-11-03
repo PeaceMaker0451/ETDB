@@ -49,20 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNewEmployee.cs">
+    <Compile Include="EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewEmployee.Designer.cs">
-      <DependentUpon>AddNewEmployee.cs</DependentUpon>
+    <Compile Include="EditEmployee.Designer.cs">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
     <Compile Include="DBInitializer.cs" />
     <Compile Include="DBManager.cs" />
+    <Compile Include="EditJobTitles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditJobTitles.Designer.cs">
+      <DependentUpon>EditJobTitles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesEventsDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeesEventsDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EmployeesManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmployeesManagement.Designer.cs">
       <DependentUpon>EmployeesManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputDialog.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,11 +86,18 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddNewEmployee.resx">
-      <DependentUpon>AddNewEmployee.cs</DependentUpon>
+    <Compile Include="TablesTools.cs" />
+    <EmbeddedResource Include="EditEmployee.resx">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditJobTitles.resx">
+      <DependentUpon>EditJobTitles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesManagement.resx">
       <DependentUpon>EmployeesManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,10 +107,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="EmployeesEventsDBDataSet.xsc">
+      <DependentUpon>EmployeesEventsDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EmployeesEventsDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmployeesEventsDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EmployeesEventsDBDataSet.xss">
+      <DependentUpon>EmployeesEventsDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,6 +136,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync_24dp_273849_FILL0_wght500_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\badge_16dp_273849_FILL0_wght500_GRAD200_opsz20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work_16dp_273849_FILL0_wght500_GRAD200_opsz20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view_week_16dp_273849_FILL0_wght500_GRAD200_opsz20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\domain_16dp_273849_FILL0_wght500_GRAD200_opsz20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync_16dp_273849_FILL0_wght500_GRAD200_opsz20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error_23dp_BB271A_FILL0_wght700_GRAD0_opsz24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
