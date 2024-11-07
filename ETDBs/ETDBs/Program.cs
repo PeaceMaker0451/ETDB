@@ -30,11 +30,47 @@ namespace ETDBs
                 config.DBConnectionPath = "Server=localhost\\SQLEXPRESS;Database=EmployeesEventsDB;Trusted_Connection=True;";
             }
 
-            dbManager = new DBManager(config.DBConnectionPath);
+            var configForm = new ConfigForm(config);
 
-            splash.Hide();
+            if (config.alwaysConfig)
+            {
+                configForm.ShowDialog();
+            }
 
-            Application.Run(new EmployeesManagement(dbManager));
+            bool notLoaded = true;
+            
+            while(notLoaded)
+            {
+                try
+                {
+                    dbManager = new DBManager(config.DBConnectionPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Невозможно подключиться к базе данных - {ex.Message}");
+                    configForm.ShowDialog();
+                    continue;
+                }
+                
+
+                splash.Hide();
+
+                switch (config.ProgramMode)
+                {
+                    case 0:
+                        notLoaded = false;
+                        Application.Run(new EmployeesManagement(dbManager));
+                        break;
+                    case 1:
+                        notLoaded = false;
+                        Application.Run(new EventsManagement(dbManager,config));
+                        break;
+                    default:
+                        MessageBox.Show($"Неправильный режим программы");
+                        configForm.ShowDialog();
+                        continue;
+                }
+            }
         }
     }
 }

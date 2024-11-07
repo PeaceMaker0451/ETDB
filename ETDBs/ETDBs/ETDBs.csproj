@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,7 +62,6 @@
       <DependentUpon>EditEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
-    <Compile Include="DBInitializer.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="EditJobTitles.cs">
       <SubType>Form</SubType>
@@ -64,6 +69,7 @@
     <Compile Include="EditJobTitles.Designer.cs">
       <DependentUpon>EditJobTitles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs" />
     <Compile Include="EmployeesEventsDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,6 +80,12 @@
     </Compile>
     <Compile Include="EmployeesManagement.Designer.cs">
       <DependentUpon>EmployeesManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventsManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventsManagement.Designer.cs">
+      <DependentUpon>EventsManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="InputDialog.cs">
       <SubType>Form</SubType>
@@ -87,6 +99,9 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="TablesTools.cs" />
+    <EmbeddedResource Include="ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditEmployee.resx">
       <DependentUpon>EditEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesManagement.resx">
       <DependentUpon>EmployeesManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventsManagement.resx">
+      <DependentUpon>EventsManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
@@ -157,6 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\error_23dp_BB271A_FILL0_wght700_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\event_24dp_273849_FILL0_wght400_GRAD200_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt_long_24dp_273849_FILL0_wght400_GRAD200_opsz24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

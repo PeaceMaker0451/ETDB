@@ -14,6 +14,7 @@ namespace ETDBs
     {
         public SplashScreen()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
     }

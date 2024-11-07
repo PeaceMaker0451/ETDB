@@ -51,5 +51,24 @@ namespace ETDBs
 
             return filteredTable; // Возвращаем таблицу с отфильтрованными строками
         }
+
+        public static DateTime CalculateNextEventDate(DateTime startDate, bool isMonths, int toNextValue)
+        {
+            DateTime nextEventDate = startDate;
+
+            while (nextEventDate < DateTime.Now.Date)
+            {
+                if (isMonths)
+                {
+                    nextEventDate = nextEventDate.AddMonths(toNextValue);
+                }
+                else
+                {
+                    nextEventDate = nextEventDate.AddDays(toNextValue);
+                }
+            }
+
+            return nextEventDate;
+        }
     }
 }

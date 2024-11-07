@@ -42,8 +42,8 @@ namespace ETDBs
                 );
 
                 INSERT INTO Statuses (StatusName) VALUES 
-                ('Не нанят'), 
-                ('Нанят'), 
+                ('Не принят'), 
+                ('Принят'), 
                 ('Уволен'), 
                 ('Переведен');
             END;
@@ -68,6 +68,38 @@ namespace ETDBs
                 );
             END;
 
+            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='EmployeesEvents' and xtype='U')
+            BEGIN
+                CREATE TABLE EmployeesEvents (
+                    EventID INT PRIMARY KEY IDENTITY,
+                    EmployeeID INT FOREIGN KEY REFERENCES Employees(EmployeeID),
+                    EventName NVARCHAR(50),
+                    StartDate DATE NOT NULL,
+                    ToNext INT NOT NULL,
+                    IsMonths BIT NOT NULL
+                );
+            END;
+
+            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='TitlesEvents' and xtype='U')
+            BEGIN
+                CREATE TABLE TitlesEvents (
+                    EventID INT PRIMARY KEY IDENTITY,
+                    JobTitleID INT FOREIGN KEY REFERENCES JobTitles(JobTitleID),
+                    EventName NVARCHAR(50),
+                    ToNext INT NOT NULL,
+                    IsMonths BIT NOT NULL
+                );
+            END;
+
+            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='TitlesEventsDates' and xtype='U')
+            BEGIN
+                CREATE TABLE TitlesEventsDates (
+                    EventID INT FOREIGN KEY REFERENCES TitlesEvents(EventID),
+                    EmployeeID INT FOREIGN KEY REFERENCES Employees(EmployeeID),
+                    StartDate DATE NOT NULL,
+                );
+            END;
+
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='EmployeeAttributes' and xtype='U')
             BEGIN
                 CREATE TABLE EmployeeAttributes (
@@ -77,6 +109,226 @@ namespace ETDBs
                     PRIMARY KEY (EmployeeID, AttributeName)
                 );
             END;";
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public DataTable GetAllEmployeeEventsTable(int employeeId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            SELECT EventID, EventName, StartDate, ToNext, IsMonths
+            FROM EmployeesEvents
+            WHERE EmployeeID = @EmployeeID", connection);
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+
+                var adapter = new SqlDataAdapter(command);
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        public DataTable GetEmployeeEventTable(int employeeId, int eventId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            SELECT EventID, EventName, StartDate, ToNext, IsMonths
+            FROM EmployeesEvents
+            WHERE EmployeeID = @EmployeeID AND EventID = @EventID", connection);
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                command.Parameters.AddWithValue("@EventID", eventId);
+
+                var adapter = new SqlDataAdapter(command);
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        public int AddEmployeeEvent(int employeeId, string eventName, DateTime startDate, int timeToNext, bool isMonths)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            INSERT INTO EmployeesEvents (EmployeeID, EventName, StartDate, ToNext, IsMonths)
+            OUTPUT INSERTED.EventID
+            VALUES (@EmployeeID, @EventName, @StartDate, @ToNext, @IsMonths)", connection);
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                command.Parameters.AddWithValue("@EventName", eventName);
+                command.Parameters.AddWithValue("@StartDate", startDate);
+                command.Parameters.AddWithValue("@ToNext", timeToNext);
+                command.Parameters.AddWithValue("@IsMonths", isMonths);
+
+                return (int)command.ExecuteScalar();
+            }
+        }
+
+        public void UpdateEmployeeEvent(int employeeId, int eventId, string eventName, DateTime startDate, int timeToNext, bool isMonths)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            UPDATE EmployeesEvents
+            SET EventName = @EventName, StartDate = @StartDate, ToNext = @ToNext, IsMonths = @IsMonths
+            WHERE EmployeeID = @EmployeeID AND EventID = @EventID", connection);
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                command.Parameters.AddWithValue("@EventID", eventId);
+                command.Parameters.AddWithValue("@EventName", eventName);
+                command.Parameters.AddWithValue("@StartDate", startDate);
+                command.Parameters.AddWithValue("@ToNext", timeToNext);
+                command.Parameters.AddWithValue("@IsMonths", isMonths);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public DataTable GetAllJobTitleEventsTable(int jobTitleId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            SELECT EventID, EventName, ToNext, IsMonths
+            FROM TitlesEvents
+            WHERE JobTitleID = @JobTitleID", connection);
+                command.Parameters.AddWithValue("@JobTitleID", jobTitleId);
+
+                var adapter = new SqlDataAdapter(command);
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        public DataTable GetJobTitleEventTable(int jobTitleId, int eventId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            SELECT EventID, EventName, ToNext, IsMonths
+            FROM TitlesEvents
+            WHERE JobTitleID = @JobTitleID AND EventID = @EventID", connection);
+                command.Parameters.AddWithValue("@JobTitleID", jobTitleId);
+                command.Parameters.AddWithValue("@EventID", eventId);
+
+                var adapter = new SqlDataAdapter(command);
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        public DataTable GetAllEmployeeJobTitleEventsTable(int employeeId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            SELECT te.EventID, 
+                   ted.StartDate, 
+                   te.EventName, 
+                   te.ToNext, 
+                   te.IsMonths
+            FROM TitlesEvents te
+            LEFT JOIN TitlesEventsDates ted 
+                ON te.EventID = ted.EventID AND ted.EmployeeID = @EmployeeID
+            WHERE te.JobTitleID = (SELECT JobTitleID FROM Employees WHERE EmployeeID = @EmployeeID)",
+                    connection);
+
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+
+                var adapter = new SqlDataAdapter(command);
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        public DataTable GetEmployeeJobTitleEventTable(int employeeId, int eventId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            SELECT ted.EventID, ted.StartDate, te.EventName, te.ToNext, te.IsMonths
+            FROM TitlesEventsDates ted
+            JOIN TitlesEvents te ON ted.EventID = te.EventID
+            WHERE ted.EmployeeID = @EmployeeID AND ted.EventID = @EventID", connection);
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                command.Parameters.AddWithValue("@EventID", eventId);
+
+                var adapter = new SqlDataAdapter(command);
+                var dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        public int AddJobTitleEvent(int jobTitleId, string eventName, int timeToNext, bool isMonths)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            INSERT INTO TitlesEvents (JobTitleID, EventName, ToNext, IsMonths)
+            OUTPUT INSERTED.EventID
+            VALUES (@JobTitleID, @EventName, @ToNext, @IsMonths)", connection);
+                command.Parameters.AddWithValue("@JobTitleID", jobTitleId);
+                command.Parameters.AddWithValue("@EventName", eventName);
+                command.Parameters.AddWithValue("@ToNext", timeToNext);
+                command.Parameters.AddWithValue("@IsMonths", isMonths);
+
+                return (int)command.ExecuteScalar();
+            }
+        }
+
+        public void UpdateJobTitleEvent(int jobTitleId, int eventId, string eventName, int timeToNext, bool isMonths)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            UPDATE TitlesEvents
+            SET EventName = @EventName, ToNext = @ToNext, IsMonths = @IsMonths
+            WHERE JobTitleID = @JobTitleID AND EventID = @EventID", connection);
+                command.Parameters.AddWithValue("@JobTitleID", jobTitleId);
+                command.Parameters.AddWithValue("@EventID", eventId);
+                command.Parameters.AddWithValue("@EventName", eventName);
+                command.Parameters.AddWithValue("@ToNext", timeToNext);
+                command.Parameters.AddWithValue("@IsMonths", isMonths);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetJobTitleEventDate(int employeeId, int eventId, DateTime startDate)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(@"
+            IF EXISTS (SELECT 1 FROM TitlesEventsDates WHERE EmployeeID = @EmployeeID AND EventID = @EventID)
+                UPDATE TitlesEventsDates SET StartDate = @StartDate WHERE EmployeeID = @EmployeeID AND EventID = @EventID
+            ELSE
+                INSERT INTO TitlesEventsDates (EmployeeID, EventID, StartDate) VALUES (@EmployeeID, @EventID, @StartDate)", connection);
+                command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                command.Parameters.AddWithValue("@EventID", eventId);
+                command.Parameters.AddWithValue("@StartDate", startDate);
 
                 command.ExecuteNonQuery();
             }

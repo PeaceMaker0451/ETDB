@@ -15,3 +15,5 @@ D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EmployeesManagement.resources
 D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EditEmployee.resources
 D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\InputDialog.resources
 D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EditJobTitles.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.ConfigForm.resources
+D:\Projs\Git\ETDBs\ETDBs\ETDBs\obj\Debug\ETDBs.EventsManagement.resources

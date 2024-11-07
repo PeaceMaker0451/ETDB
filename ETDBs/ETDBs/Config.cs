@@ -9,10 +9,12 @@ using Newtonsoft.Json;
 
 namespace ETDBs
 {
-    internal class Config
+    public class Config
     {
-        public string ProgramMode = "";
-        public string DBConnectionPath = "Server=localhost\\SQLEXPRESS01;Trusted_Connection=True;";
+        public int ProgramMode = 0;
+        public string DBConnectionPath = "";
+        public int notificationLevel = 0;
+        public bool alwaysConfig = true;
 
         public void SaveToFile(string filePath)
         {

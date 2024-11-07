@@ -93,6 +93,26 @@ namespace ETDBs.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap event_24dp_273849_FILL0_wght400_GRAD200_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("event_24dp_273849_FILL0_wght400_GRAD200_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap receipt_long_24dp_273849_FILL0_wght400_GRAD200_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("receipt_long_24dp_273849_FILL0_wght400_GRAD200_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sync_16dp_273849_FILL0_wght500_GRAD200_opsz20 {
             get {
                 object obj = ResourceManager.GetObject("sync_16dp_273849_FILL0_wght500_GRAD200_opsz20", resourceCulture);

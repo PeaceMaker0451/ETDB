@@ -28,37 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.employeesTable = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tableTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортироватьВExcelТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteTitle = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAttribute = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьДолжностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьСтатусToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьДопПолеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.конфигурацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.лицензияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.createNewEmployeeButton = new System.Windows.Forms.ToolStripButton();
-            this.editJobTitlesButton = new System.Windows.Forms.ToolStripButton();
-            this.addStatusButton = new System.Windows.Forms.ToolStripButton();
-            this.addAttributeButton = new System.Windows.Forms.ToolStripButton();
-            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.refreshProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.searchFilterComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.editTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteTitle = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteStatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteAttribute = new System.Windows.Forms.ToolStripMenuItem();
-            this.экспортироватьВExcelТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.лицензияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьДолжностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьСтатусToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьДопПолеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.createNewEmployeeButton = new System.Windows.Forms.ToolStripButton();
+            this.editJobTitlesButton = new System.Windows.Forms.ToolStripButton();
+            this.addStatusButton = new System.Windows.Forms.ToolStripButton();
+            this.addAttributeButton = new System.Windows.Forms.ToolStripButton();
+            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,23 +74,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeesTable.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.employeesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.employeesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.employeesTable.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeesTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.employeesTable.Location = new System.Drawing.Point(0, 51);
             this.employeesTable.Name = "employeesTable";
             this.employeesTable.Size = new System.Drawing.Size(829, 444);
@@ -115,6 +118,74 @@
             this.tableTool.Size = new System.Drawing.Size(68, 20);
             this.tableTool.Text = "Таблицы";
             // 
+            // экспортироватьВExcelТаблицуToolStripMenuItem
+            // 
+            this.экспортироватьВExcelТаблицуToolStripMenuItem.Name = "экспортироватьВExcelТаблицуToolStripMenuItem";
+            this.экспортироватьВExcelТаблицуToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.экспортироватьВExcelТаблицуToolStripMenuItem.Text = "Экспортировать в Excel таблицу";
+            // 
+            // обновитьToolStripMenuItem
+            // 
+            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.обновитьToolStripMenuItem.Text = "Обновить";
+            // 
+            // editTool
+            // 
+            this.editTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteTitle,
+            this.deleteStatus,
+            this.deleteAttribute,
+            this.добавитьДолжностьToolStripMenuItem,
+            this.добавитьСтатусToolStripMenuItem,
+            this.добавитьДопПолеToolStripMenuItem,
+            this.конфигурацияToolStripMenuItem});
+            this.editTool.Name = "editTool";
+            this.editTool.Size = new System.Drawing.Size(59, 20);
+            this.editTool.Text = "Правка";
+            // 
+            // deleteTitle
+            // 
+            this.deleteTitle.Name = "deleteTitle";
+            this.deleteTitle.Size = new System.Drawing.Size(189, 22);
+            this.deleteTitle.Text = "Удалить должность";
+            // 
+            // deleteStatus
+            // 
+            this.deleteStatus.Name = "deleteStatus";
+            this.deleteStatus.Size = new System.Drawing.Size(189, 22);
+            this.deleteStatus.Text = "Удалить статус";
+            // 
+            // deleteAttribute
+            // 
+            this.deleteAttribute.Name = "deleteAttribute";
+            this.deleteAttribute.Size = new System.Drawing.Size(189, 22);
+            this.deleteAttribute.Text = "Удалить доп. поле";
+            // 
+            // добавитьДолжностьToolStripMenuItem
+            // 
+            this.добавитьДолжностьToolStripMenuItem.Name = "добавитьДолжностьToolStripMenuItem";
+            this.добавитьДолжностьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.добавитьДолжностьToolStripMenuItem.Text = "Добавить должность";
+            // 
+            // добавитьСтатусToolStripMenuItem
+            // 
+            this.добавитьСтатусToolStripMenuItem.Name = "добавитьСтатусToolStripMenuItem";
+            this.добавитьСтатусToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.добавитьСтатусToolStripMenuItem.Text = "Добавить статус";
+            // 
+            // добавитьДопПолеToolStripMenuItem
+            // 
+            this.добавитьДопПолеToolStripMenuItem.Name = "добавитьДопПолеToolStripMenuItem";
+            this.добавитьДопПолеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.добавитьДопПолеToolStripMenuItem.Text = "Добавить доп. поле";
+            // 
+            // конфигурацияToolStripMenuItem
+            // 
+            this.конфигурацияToolStripMenuItem.Name = "конфигурацияToolStripMenuItem";
+            this.конфигурацияToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.конфигурацияToolStripMenuItem.Text = "Конфигурация";
+            // 
             // aboutTool
             // 
             this.aboutTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -124,6 +195,24 @@
             this.aboutTool.Name = "aboutTool";
             this.aboutTool.Size = new System.Drawing.Size(94, 20);
             this.aboutTool.Text = "О программе";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // лицензияToolStripMenuItem
+            // 
+            this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
+            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.лицензияToolStripMenuItem.Text = "Лицензия";
+            // 
+            // readMeToolStripMenuItem
+            // 
+            this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
+            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.readMeToolStripMenuItem.Text = "ReadMe";
             // 
             // groupBox1
             // 
@@ -153,14 +242,69 @@
             this.refreshProgressBar,
             this.toolStripSeparator1,
             this.searchTextBox,
+            this.searchFilterComboBox,
             this.toolStripSeparator2,
-            this.searchFilterComboBox});
+            this.toolStripComboBox1,
+            this.toolStripComboBox2});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(823, 32);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // refreshProgressBar
+            // 
+            this.refreshProgressBar.Name = "refreshProgressBar";
+            this.refreshProgressBar.Size = new System.Drawing.Size(100, 29);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(150, 32);
+            this.searchTextBox.Text = "Поиск";
+            this.searchTextBox.ToolTipText = "Поле поиска";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+            // 
+            // searchFilterComboBox
+            // 
+            this.searchFilterComboBox.Name = "searchFilterComboBox";
+            this.searchFilterComboBox.Size = new System.Drawing.Size(150, 32);
+            this.searchFilterComboBox.Text = "Поиск - колонка";
+            this.searchFilterComboBox.ToolTipText = "Фильтр поиска";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(4, 528);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(317, 13);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Базы данных событий v. 0.1.2";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 32);
+            this.toolStripComboBox1.Text = "Должность - фильтр";
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 32);
+            this.toolStripComboBox2.Text = "Статус - фильтр";
             // 
             // createNewEmployeeButton
             // 
@@ -208,126 +352,6 @@
             this.refreshButton.Size = new System.Drawing.Size(26, 29);
             this.refreshButton.Text = "Обновить";
             // 
-            // refreshProgressBar
-            // 
-            this.refreshProgressBar.Name = "refreshProgressBar";
-            this.refreshProgressBar.Size = new System.Drawing.Size(100, 29);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(150, 32);
-            this.searchTextBox.Text = "Поиск";
-            this.searchTextBox.ToolTipText = "Поле поиска";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
-            // searchFilterComboBox
-            // 
-            this.searchFilterComboBox.Name = "searchFilterComboBox";
-            this.searchFilterComboBox.Size = new System.Drawing.Size(150, 32);
-            this.searchFilterComboBox.Text = "Поиск - колонка";
-            this.searchFilterComboBox.ToolTipText = "Фильтр поиска";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(4, 528);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 13);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Базы данных событий v. 0.0.1";
-            // 
-            // editTool
-            // 
-            this.editTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteTitle,
-            this.deleteStatus,
-            this.deleteAttribute,
-            this.добавитьДолжностьToolStripMenuItem,
-            this.добавитьСтатусToolStripMenuItem,
-            this.добавитьДопПолеToolStripMenuItem});
-            this.editTool.Name = "editTool";
-            this.editTool.Size = new System.Drawing.Size(59, 20);
-            this.editTool.Text = "Правка";
-            // 
-            // deleteTitle
-            // 
-            this.deleteTitle.Name = "deleteTitle";
-            this.deleteTitle.Size = new System.Drawing.Size(189, 22);
-            this.deleteTitle.Text = "Удалить должность";
-            // 
-            // deleteStatus
-            // 
-            this.deleteStatus.Name = "deleteStatus";
-            this.deleteStatus.Size = new System.Drawing.Size(189, 22);
-            this.deleteStatus.Text = "Удалить статус";
-            // 
-            // deleteAttribute
-            // 
-            this.deleteAttribute.Name = "deleteAttribute";
-            this.deleteAttribute.Size = new System.Drawing.Size(189, 22);
-            this.deleteAttribute.Text = "Удалить доп. поле";
-            // 
-            // экспортироватьВExcelТаблицуToolStripMenuItem
-            // 
-            this.экспортироватьВExcelТаблицуToolStripMenuItem.Name = "экспортироватьВExcelТаблицуToolStripMenuItem";
-            this.экспортироватьВExcelТаблицуToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.экспортироватьВExcelТаблицуToolStripMenuItem.Text = "Экспортировать в Excel таблицу";
-            // 
-            // обновитьToolStripMenuItem
-            // 
-            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
-            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.обновитьToolStripMenuItem.Text = "Обновить";
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            // 
-            // лицензияToolStripMenuItem
-            // 
-            this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
-            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.лицензияToolStripMenuItem.Text = "Лицензия";
-            // 
-            // readMeToolStripMenuItem
-            // 
-            this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
-            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.readMeToolStripMenuItem.Text = "ReadMe";
-            // 
-            // добавитьДолжностьToolStripMenuItem
-            // 
-            this.добавитьДолжностьToolStripMenuItem.Name = "добавитьДолжностьToolStripMenuItem";
-            this.добавитьДолжностьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.добавитьДолжностьToolStripMenuItem.Text = "Добавить должность";
-            // 
-            // добавитьСтатусToolStripMenuItem
-            // 
-            this.добавитьСтатусToolStripMenuItem.Name = "добавитьСтатусToolStripMenuItem";
-            this.добавитьСтатусToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.добавитьСтатусToolStripMenuItem.Text = "Добавить статус";
-            // 
-            // добавитьДопПолеToolStripMenuItem
-            // 
-            this.добавитьДопПолеToolStripMenuItem.Name = "добавитьДопПолеToolStripMenuItem";
-            this.добавитьДопПолеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.добавитьДопПолеToolStripMenuItem.Text = "Добавить доп. поле";
-            // 
             // EmployeesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,7 +397,6 @@
         private System.Windows.Forms.ToolStripTextBox searchTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem editTool;
-        private System.Windows.Forms.ToolStripMenuItem deleteTitle;
         private System.Windows.Forms.ToolStripMenuItem deleteStatus;
         private System.Windows.Forms.ToolStripMenuItem deleteAttribute;
         private System.Windows.Forms.ToolStripMenuItem экспортироватьВExcelТаблицуToolStripMenuItem;
@@ -384,6 +407,10 @@
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem лицензияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readMeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteTitle;
+        private System.Windows.Forms.ToolStripMenuItem конфигурацияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
     }
 }
 
