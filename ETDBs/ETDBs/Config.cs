@@ -13,8 +13,16 @@ namespace ETDBs
     {
         public int ProgramMode = 0;
         public string DBConnectionPath = "";
-        public int notificationLevel = 0;
+        public int notificationLevel = 1;
         public bool alwaysConfig = true;
+        public bool startWithSystem;
+        public int textSize = 8;
+
+        public bool startHided;
+        public bool notifyWhenProgramIsNotHided;
+        public int notificationInterval = 1;
+        public int maxDaysToNotifyAboutEvent = 14;
+        public bool simplifyNotifications = true;
 
         public void SaveToFile(string filePath)
         {

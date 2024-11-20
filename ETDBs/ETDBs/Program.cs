@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ETDBs
@@ -10,6 +11,7 @@ namespace ETDBs
     internal static class Program
     {
         public static Config config;
+        public static string configPath;
         public static DBManager dbManager;
 
         [STAThread]
@@ -18,59 +20,111 @@ namespace ETDBs
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var splash = new SplashScreen();
+            LoadAndRunApplication();
+        }
 
-            splash.Show();
-
-            config = Config.LoadFromFile(Path.Combine(Application.StartupPath, "config.json"));
-
-            if (config == null)
-            {
-                config = new Config();
-                config.DBConnectionPath = "Server=localhost\\SQLEXPRESS;Database=EmployeesEventsDB;Trusted_Connection=True;";
-            }
+        static void LoadAndRunApplication()
+        {
+            configPath = Path.Combine(Application.StartupPath, "config.json");
+            config = LoadOrInitializeConfig();
 
             var configForm = new ConfigForm(config);
+            var splashScreen = new SplashScreen();
 
-            if (config.alwaysConfig)
-            {
-                configForm.ShowDialog();
-            }
+            bool appReady = false;
 
-            bool notLoaded = true;
-            
-            while(notLoaded)
+            bool starting = true;
+
+            while (!appReady)
             {
-                try
+                splashScreen.Hide();
+
+                if (config.alwaysConfig || starting == false)
                 {
-                    dbManager = new DBManager(config.DBConnectionPath);
+                    if (configForm.ShowDialog() == DialogResult.Cancel)
+                    {
+                        // Если окно ConfigForm закрыто с Cancel, завершаем приложение
+                        Application.Exit();
+                        return;
+                    }
+
+                    config.SaveToFile(configPath);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Невозможно подключиться к базе данных - {ex.Message}");
-                    configForm.ShowDialog();
-                    continue;
-                }
+
+                splashScreen.Show();
                 
+                starting = false;
 
-                splash.Hide();
+                var dbManager = InitializeDatabaseManager(config, configForm);
 
-                switch (config.ProgramMode)
-                {
-                    case 0:
-                        notLoaded = false;
-                        Application.Run(new EmployeesManagement(dbManager));
-                        break;
-                    case 1:
-                        notLoaded = false;
-                        Application.Run(new EventsManagement(dbManager,config));
-                        break;
-                    default:
-                        MessageBox.Show($"Неправильный режим программы");
-                        configForm.ShowDialog();
-                        continue;
-                }
+                if (dbManager == null)
+                    continue;
+
+                splashScreen.Hide();
+
+                appReady = StartApplication(config, dbManager);
             }
+        }
+
+        static Config LoadOrInitializeConfig()
+        {
+            var config = Config.LoadFromFile(configPath);
+
+            config = config ?? new Config();
+            return config;
+        }
+
+        static DBManager InitializeDatabaseManager(Config config, ConfigForm configForm)
+        {
+            try
+            {
+                return new DBManager(config.DBConnectionPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Невозможно подключиться к базе данных - {ex.Message}");
+                return null; // Возвращаем null, если подключение не удалось
+            }
+        }
+
+        static bool StartApplication(Config config, DBManager dbManager)
+        {
+            switch (config.ProgramMode)
+            {
+                case 0:
+                    return RunMainForm(new EmployeesManagement(dbManager, config), config);
+
+                case 1:
+                    return RunMainForm(new EventsManagement(dbManager, config), config);
+                case 2:
+                    return RunMainForm(new EventsPlanning(dbManager, config), config);
+
+                default:
+                    MessageBox.Show("Неправильный режим программы");
+                    return false;
+            }
+        }
+
+        static bool RunMainForm(Form mainForm, Config config)
+        {
+            //mainForm.FormClosed += (sender, args) =>
+            //{
+            //    if (mainForm.DialogResult == DialogResult.Retry)
+            //    {
+            //        LoadAndRunApplication(); // Возврат к конфигурации
+            //    }
+            //};
+
+            if(mainForm.ShowDialog() == DialogResult.Retry)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static void SetFormSize(Form form)
+        {
+            form.Font = new Font(form.Font.FontFamily, config.textSize);
         }
     }
 }

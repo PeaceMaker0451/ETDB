@@ -1,0 +1,13 @@
+{
+  "ProgramMode": 2,
+  "DBConnectionPath": "Server=127.0.0.1;Database=EmployeesEventsDB;User Id=test;Password=test;TrustServerCertificate=True;",
+  "notificationLevel": 0,
+  "alwaysConfig": false,
+  "startWithSystem": false,
+  "textSize": 9,
+  "startHided": false,
+  "notifyWhenProgramIsNotHided": false,
+  "notificationInterval": 5,
+  "maxDaysToNotifyAboutEvent": 31,
+  "simplifyNotifications": true
+}

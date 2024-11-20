@@ -15,35 +15,39 @@ namespace ETDBs
     {
         private DBManager dbManager;
 
+        private bool edit;
+
 
         public int eID { get; private set; }
         public string eName { get; private set; }
         public int eTitle { get; private set; }
-        public DateTime eMedTime { get; private set; }
-        public DateTime eHireTime { get; private set; }
         public int eStatus { get; private set; }
         public DataTable eAttributes { get; private set; }
 
-        public EditEmployee(DBManager manager)
+        private List<int> titlesIds;
+
+        public EditEmployee(DBManager manager, bool _edit = true)
         {
             dbManager = manager;
+            edit = _edit;
             InitializeComponent();
 
 
-            UpdateTitlesTable();
+            UpdateAttributesTable();
             Ready();
             SetDefaultValues();
         }
 
-        public EditEmployee(DBManager manager, int id, string name, int title, DateTime medTime, DateTime hireTime, int status)
+        public EditEmployee(DBManager manager, int id, string name, int title, int status, bool _edit = true)
         {
             dbManager = manager;
+            edit = _edit;
             InitializeComponent();
 
-            UpdateTitlesTable(id);
+            UpdateAttributesTable(id);
             Ready();
 
-            eID = id; eName = name; eTitle = title; eMedTime = medTime; eHireTime = hireTime; eStatus = status;
+            eID = id; eName = name; eTitle = title; eStatus = status;
             SetValues();
             SetDefaultValues();
         }
@@ -51,15 +55,14 @@ namespace ETDBs
         private void SetDefaultValues()
         {
             eName = nameTextBox.Text;
-            eTitle = jobTitleComboBox.SelectedIndex + 1;
-            eHireTime = hireDate.Value;
-            eMedTime = medDate.Value;
-            eStatus = statusComboBox.SelectedIndex + 1;
+            eTitle = (int)jobTitleComboBox.SelectedValue;
+            eStatus = (int)statusComboBox.SelectedValue;
             eAttributes = (DataTable)attributesTable.DataSource;
         }
 
         private void Ready()
         {
+            Program.SetFormSize(this);
             this.StartPosition = FormStartPosition.CenterScreen;
             LoadJobTitles();
             LoadStatuses();
@@ -75,20 +78,23 @@ namespace ETDBs
                     nameCheckIcon.Visible = false; 
             };
 
-            jobTitleComboBox.SelectedValueChanged += (s, e) => eTitle = jobTitleComboBox.SelectedIndex + 1;
-            hireDate.ValueChanged += (s, e) => eHireTime = hireDate.Value;
-            medDate.ValueChanged += (s, e) => eMedTime = medDate.Value;
-            statusComboBox.SelectedValueChanged += (s, e) => eStatus = statusComboBox.SelectedIndex + 1;
+            jobTitleComboBox.SelectedValueChanged += (s, e) => eTitle = (int)jobTitleComboBox.SelectedValue;
+            statusComboBox.SelectedValueChanged += (s, e) => eStatus = (int)statusComboBox.SelectedValue;
             attributesTable.CellValueChanged += (s, e) => eAttributes = (DataTable)attributesTable.DataSource;
         }
 
         private void SetValues()
         {
             nameTextBox.Text = eName;
-            jobTitleComboBox.SelectedIndex = eTitle - 1;
-            hireDate.Value = eHireTime;
-            medDate.Value = eMedTime;
-            statusComboBox.SelectedIndex = eStatus - 1;
+            jobTitleComboBox.SelectedValue = eTitle;
+            statusComboBox.SelectedValue = eStatus;
+
+            if(!edit)
+            {
+                nameTextBox.Enabled = false;
+                statusComboBox.Enabled = false;
+                jobTitleComboBox.Enabled = false;
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -103,23 +109,24 @@ namespace ETDBs
             this.Close();
         }
 
-        private void UpdateTitlesTable(int id = 0)
+        private void UpdateAttributesTable(int id = 0)
         {
             attributesTable.Columns.Clear();
+            attributesTable.AllowUserToAddRows = false;
+            attributesTable.ReadOnly = false;
             try
             {
                 DataTable titles = null;
                 
-                if (id == 0)
+                if (id <= 0)
                     titles = dbManager.GetEmptyAttributesTemplate();
                 else
                     titles = dbManager.GetEmployeeAttributesById(id);
 
                 attributesTable.DataSource = titles;
-                attributesTable.ReadOnly = false;
-                attributesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                
+                
                 attributesTable.Columns["EmployeeID"].Visible = false;
-                attributesTable.AllowUserToAddRows = false;
 
             }
             catch (Exception ex)
@@ -131,17 +138,17 @@ namespace ETDBs
         private void LoadJobTitles()
         {
             var jobTitles = dbManager.GetAllJobTitles();
-            jobTitleComboBox.DisplayMember = "Title"; // Имя столбца для отображения
-            jobTitleComboBox.ValueMember = "JobTitleID"; // Имя столбца для значения
+
+            jobTitleComboBox.DisplayMember = "Title";
+            jobTitleComboBox.ValueMember = "JobTitleID";
             jobTitleComboBox.DataSource = jobTitles;
         }
 
-        // Метод для загрузки статусов в ComboBox
         private void LoadStatuses()
         {
             var statuses = dbManager.GetAllStatuses();
-            statusComboBox.DisplayMember = "StatusName"; // Имя столбца для отображения
-            statusComboBox.ValueMember = "StatusID"; // Имя столбца для значения
+            statusComboBox.DisplayMember = "StatusName";
+            statusComboBox.ValueMember = "StatusID";
             statusComboBox.DataSource = statuses;
         }
     }

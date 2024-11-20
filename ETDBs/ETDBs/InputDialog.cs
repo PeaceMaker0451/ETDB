@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETDBs;
+using System;
 using System.Windows.Forms;
 
 public class InputDialog : Form
@@ -31,6 +32,9 @@ public class InputDialog : Form
 
         this.AcceptButton = okButton;
         this.CancelButton = cancelButton;
+
+
+        Program.SetFormSize(this);
     }
 
     public static string ShowDialog(string title)

@@ -19,8 +19,10 @@ namespace ETDBs
             dbManager = manager;
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
-            UpdateJobTitlesYable();
+            UpdateJobTitlesTable();
             addNewJobTitleButton.Click += AddNewJobTitleButton_Click;
+
+            Program.SetFormSize(this);
         }
 
         private void AddNewJobTitleButton_Click(object sender, EventArgs e)
@@ -30,13 +32,13 @@ namespace ETDBs
             {
                 dbManager.AddJobTitle(name);
                 MessageBox.Show($"Должность '{name}' добавлена!");
-                UpdateJobTitlesYable();
+                UpdateJobTitlesTable();
             }
         }
 
-        private void UpdateJobTitlesYable()
+        private void UpdateJobTitlesTable()
         {
-            jobTitlesTable.CellClick -= EditJobTitleCellButton;
+            jobTitlesTable.CellClick -= JobTitleCellButtonClick;
             jobTitlesTable.Columns.Clear();
 
             // Присваиваем таблицу DataGridView
@@ -52,28 +54,58 @@ namespace ETDBs
 
             var editButtonColumn = new DataGridViewButtonColumn
             {
-                HeaderText = "Редактирование",
+                HeaderText = "Редактирование должности",
                 Text = "Редактировать",
-                UseColumnTextForButtonValue = true,  // Устанавливаем текст для всех кнопок
-                Name = "EditButton"                  // Уникальное имя для обработки нажатия
+                UseColumnTextForButtonValue = true,
+                Name = "EditButton"
             };
             jobTitlesTable.Columns.Add(editButtonColumn);
             jobTitlesTable.Columns["EditButton"].DisplayIndex = 1;
 
-            // Подписываемся на событие для обработки нажатия на кнопку
-            jobTitlesTable.CellClick += EditJobTitleCellButton;
+            var deleteButtonColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "Удаление должности",
+                Text = "Удалить",
+                UseColumnTextForButtonValue = true,
+                Name = "DeleteButton"
+            };
+            jobTitlesTable.Columns.Add(deleteButtonColumn);
+            jobTitlesTable.Columns["DeleteButton"].DisplayIndex = jobTitlesTable.Columns.Count - 1;
+
+            jobTitlesTable.CellClick += JobTitleCellButtonClick;
         }
 
-        private void EditJobTitleCellButton(object sender, DataGridViewCellEventArgs e)
+        private void JobTitleCellButtonClick(object sender, DataGridViewCellEventArgs e)
         {
-            string name = InputDialog.ShowDialog("Переименование");
-            if (name != null)
-            {
-                int jobTitleId = Convert.ToInt32(jobTitlesTable.Rows[e.RowIndex].Cells["JobTitleID"].Value);
 
-                dbManager.UpdateJobTitle(jobTitleId, name);
-                MessageBox.Show($"Должность '{name}' переименована!");
-                UpdateJobTitlesYable();
+            int jobTitleId = Convert.ToInt32(jobTitlesTable.Rows[e.RowIndex].Cells["JobTitleID"].Value);
+
+            if (e.ColumnIndex == jobTitlesTable.Columns["EditButton"].Index && e.RowIndex >= 0)
+            {
+                string name = InputDialog.ShowDialog("Переименование должности");
+                if (name != null)
+                {
+                    dbManager.UpdateJobTitle(jobTitleId, name);
+                    MessageBox.Show($"Должность '{name}' переименована!");
+                    UpdateJobTitlesTable();
+                }
+            }
+            else if (e.ColumnIndex == jobTitlesTable.Columns["DeleteButton"].Index && e.RowIndex >= 0)
+            {
+                string name = jobTitlesTable.Rows[e.RowIndex].Cells["Title"].Value.ToString();
+
+                DialogResult result = MessageBox.Show(
+                   $"Вы собираетесь удалить должность '{name}', всех сотрудников этой должности (!!!) и все, что с ними связано.\nЭто действие невозможно обратить\n\nВы уверены?",
+                   "Удаление сотрудника",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning
+               );
+
+                // Проверка результата
+                if (result == DialogResult.Yes)
+                    dbManager.DeleteJobTitle(jobTitleId);
+
+                UpdateJobTitlesTable();
             }
         }
     }

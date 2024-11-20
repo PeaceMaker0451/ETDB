@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventsManagement));
             this.employeesList = new System.Windows.Forms.ListBox();
             this.employeeEventsTable = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -38,15 +40,25 @@
             this.titleEventsTable = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.refreshBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.addEmployeeEventButton = new System.Windows.Forms.ToolStripButton();
+            this.editTitleEventsButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.таблицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьЛичноеСобытиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьДолжностныеСобытияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.лицензияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.refreshButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.viewEmployeeMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.aboutTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewAllTool = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.employeeEventsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -63,21 +75,21 @@
             this.groupBox4.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.viewEmployeeMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeesList
             // 
             this.employeesList.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.employeesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.employeesList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.employeesList.FormattingEnabled = true;
-            this.employeesList.ItemHeight = 16;
             this.employeesList.Items.AddRange(new object[] {
             "Сотрудник 1",
             "Сотрудник 2"});
             this.employeesList.Location = new System.Drawing.Point(3, 16);
             this.employeesList.Name = "employeesList";
-            this.employeesList.Size = new System.Drawing.Size(141, 435);
+            this.employeesList.Size = new System.Drawing.Size(123, 357);
             this.employeesList.TabIndex = 0;
             // 
             // employeeEventsTable
@@ -87,7 +99,7 @@
             this.employeeEventsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeEventsTable.Location = new System.Drawing.Point(3, 16);
             this.employeeEventsTable.Name = "employeeEventsTable";
-            this.employeeEventsTable.Size = new System.Drawing.Size(724, 194);
+            this.employeeEventsTable.Size = new System.Drawing.Size(634, 153);
             this.employeeEventsTable.TabIndex = 1;
             // 
             // splitContainer1
@@ -105,8 +117,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(887, 454);
-            this.splitContainer1.SplitterDistance = 147;
+            this.splitContainer1.Size = new System.Drawing.Size(779, 376);
+            this.splitContainer1.SplitterDistance = 129;
             this.splitContainer1.TabIndex = 2;
             // 
             // groupBox1
@@ -115,7 +127,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 454);
+            this.groupBox1.Size = new System.Drawing.Size(129, 376);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сотрудники";
@@ -127,7 +139,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(736, 454);
+            this.groupBox2.Size = new System.Drawing.Size(646, 376);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "События";
@@ -146,8 +158,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
-            this.splitContainer2.Size = new System.Drawing.Size(730, 406);
-            this.splitContainer2.SplitterDistance = 189;
+            this.splitContainer2.Size = new System.Drawing.Size(640, 328);
+            this.splitContainer2.SplitterDistance = 152;
             this.splitContainer2.TabIndex = 1;
             // 
             // groupBox3
@@ -156,7 +168,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(730, 189);
+            this.groupBox3.Size = new System.Drawing.Size(640, 152);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "События по должности";
@@ -168,7 +180,7 @@
             this.titleEventsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleEventsTable.Location = new System.Drawing.Point(3, 16);
             this.titleEventsTable.Name = "titleEventsTable";
-            this.titleEventsTable.Size = new System.Drawing.Size(724, 170);
+            this.titleEventsTable.Size = new System.Drawing.Size(634, 133);
             this.titleEventsTable.TabIndex = 2;
             // 
             // groupBox4
@@ -177,7 +189,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(730, 213);
+            this.groupBox4.Size = new System.Drawing.Size(640, 172);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "События сотрудника";
@@ -188,59 +200,13 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshButton,
             this.refreshBar,
-            this.toolStripButton2,
-            this.toolStripButton3});
+            this.addEmployeeEventButton,
+            this.editTitleEventsButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(730, 29);
+            this.toolStrip1.Size = new System.Drawing.Size(640, 29);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // refreshBar
-            // 
-            this.refreshBar.Name = "refreshBar";
-            this.refreshBar.Size = new System.Drawing.Size(100, 26);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.таблицыToolStripMenuItem,
-            this.правкаToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(887, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // таблицыToolStripMenuItem
-            // 
-            this.таблицыToolStripMenuItem.Name = "таблицыToolStripMenuItem";
-            this.таблицыToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.таблицыToolStripMenuItem.Text = "Таблицы";
-            // 
-            // правкаToolStripMenuItem
-            // 
-            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.правкаToolStripMenuItem.Text = "Правка";
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(3, 484);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 13);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Базы данных событий v. 0.1.2";
             // 
             // refreshButton
             // 
@@ -251,34 +217,153 @@
             this.refreshButton.Size = new System.Drawing.Size(26, 26);
             this.refreshButton.Text = "Обновить";
             // 
-            // toolStripButton2
+            // refreshBar
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::ETDBs.Properties.Resources.event_24dp_273849_FILL0_wght400_GRAD200_opsz24;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(26, 26);
-            this.toolStripButton2.Text = "Добавить событие сотрудника";
+            this.refreshBar.Name = "refreshBar";
+            this.refreshBar.Size = new System.Drawing.Size(100, 26);
             // 
-            // toolStripButton3
+            // addEmployeeEventButton
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::ETDBs.Properties.Resources.receipt_long_24dp_273849_FILL0_wght400_GRAD200_opsz24;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(26, 26);
-            this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.ToolTipText = "Редактирование должостных событий";
+            this.addEmployeeEventButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addEmployeeEventButton.Image = global::ETDBs.Properties.Resources.event_24dp_273849_FILL0_wght400_GRAD200_opsz24;
+            this.addEmployeeEventButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addEmployeeEventButton.Name = "addEmployeeEventButton";
+            this.addEmployeeEventButton.Size = new System.Drawing.Size(26, 26);
+            this.addEmployeeEventButton.Text = "Добавить событие сотрудника";
+            // 
+            // editTitleEventsButton
+            // 
+            this.editTitleEventsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editTitleEventsButton.Image = global::ETDBs.Properties.Resources.receipt_long_24dp_273849_FILL0_wght400_GRAD200_opsz24;
+            this.editTitleEventsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editTitleEventsButton.Name = "editTitleEventsButton";
+            this.editTitleEventsButton.Size = new System.Drawing.Size(26, 26);
+            this.editTitleEventsButton.Text = "toolStripButton3";
+            this.editTitleEventsButton.ToolTipText = "Редактирование должостных событий";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.таблицыToolStripMenuItem,
+            this.правкаToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(779, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // таблицыToolStripMenuItem
+            // 
+            this.таблицыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.обновитьToolStripMenuItem});
+            this.таблицыToolStripMenuItem.Name = "таблицыToolStripMenuItem";
+            this.таблицыToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.таблицыToolStripMenuItem.Text = "Таблицы";
+            // 
+            // обновитьToolStripMenuItem
+            // 
+            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.обновитьToolStripMenuItem.Text = "Обновить";
+            // 
+            // правкаToolStripMenuItem
+            // 
+            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configMenuItem,
+            this.добавитьЛичноеСобытиеToolStripMenuItem,
+            this.редактироватьДолжностныеСобытияToolStripMenuItem});
+            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.правкаToolStripMenuItem.Text = "Правка";
+            // 
+            // configMenuItem
+            // 
+            this.configMenuItem.Name = "configMenuItem";
+            this.configMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.configMenuItem.Text = "Вернуться к конфигурации";
+            // 
+            // добавитьЛичноеСобытиеToolStripMenuItem
+            // 
+            this.добавитьЛичноеСобытиеToolStripMenuItem.Name = "добавитьЛичноеСобытиеToolStripMenuItem";
+            this.добавитьЛичноеСобытиеToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.добавитьЛичноеСобытиеToolStripMenuItem.Text = "Добавить личное событие";
+            // 
+            // редактироватьДолжностныеСобытияToolStripMenuItem
+            // 
+            this.редактироватьДолжностныеСобытияToolStripMenuItem.Name = "редактироватьДолжностныеСобытияToolStripMenuItem";
+            this.редактироватьДолжностныеСобытияToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.редактироватьДолжностныеСобытияToolStripMenuItem.Text = "Редактировать должностные события";
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оПрограммеToolStripMenuItem1,
+            this.лицензияToolStripMenuItem,
+            this.readMeToolStripMenuItem});
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
+            // оПрограммеToolStripMenuItem1
+            // 
+            this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.оПрограммеToolStripMenuItem1.Text = "Справка";
+            // 
+            // лицензияToolStripMenuItem
+            // 
+            this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
+            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.лицензияToolStripMenuItem.Text = "Лицензия";
+            // 
+            // readMeToolStripMenuItem
+            // 
+            this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
+            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.readMeToolStripMenuItem.Text = "ReadMe";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(3, 406);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(317, 13);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "Базы данных событий v. 0.4.12";
+            // 
+            // viewEmployeeMenuStrip
+            // 
+            this.viewEmployeeMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutTool,
+            this.viewAllTool});
+            this.viewEmployeeMenuStrip.Name = "viewEmployeeMenuStrip";
+            this.viewEmployeeMenuStrip.Size = new System.Drawing.Size(232, 48);
+            // 
+            // aboutTool
+            // 
+            this.aboutTool.Name = "aboutTool";
+            this.aboutTool.Size = new System.Drawing.Size(231, 22);
+            this.aboutTool.Text = "Подробнее";
+            // 
+            // viewAllTool
+            // 
+            this.viewAllTool.Name = "viewAllTool";
+            this.viewAllTool.Size = new System.Drawing.Size(231, 22);
+            this.viewAllTool.Text = "Просмотр всех сотрудников";
             // 
             // EventsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(887, 505);
+            this.ClientSize = new System.Drawing.Size(779, 427);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EventsManagement";
             this.Text = "ETDB - Планировщик событий";
@@ -301,6 +386,7 @@
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.viewEmployeeMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,12 +406,22 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ToolStripButton refreshButton;
         private System.Windows.Forms.ToolStripProgressBar refreshBar;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton addEmployeeEventButton;
+        private System.Windows.Forms.ToolStripButton editTitleEventsButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem таблицыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem configMenuItem;
+        private System.Windows.Forms.ContextMenuStrip viewEmployeeMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem aboutTool;
+        private System.Windows.Forms.ToolStripMenuItem viewAllTool;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem лицензияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem readMeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьЛичноеСобытиеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьДолжностныеСобытияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
     }
 }

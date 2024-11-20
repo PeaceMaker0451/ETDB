@@ -42,7 +42,7 @@
             this.jobTitlesTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.jobTitlesTable.Location = new System.Drawing.Point(3, 16);
             this.jobTitlesTable.Name = "jobTitlesTable";
-            this.jobTitlesTable.Size = new System.Drawing.Size(322, 366);
+            this.jobTitlesTable.Size = new System.Drawing.Size(423, 366);
             this.jobTitlesTable.TabIndex = 0;
             // 
             // groupBox1
@@ -53,7 +53,7 @@
             this.groupBox1.Controls.Add(this.jobTitlesTable);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 385);
+            this.groupBox1.Size = new System.Drawing.Size(429, 385);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Список должностей";
@@ -64,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewJobTitleButton.Location = new System.Drawing.Point(3, 391);
             this.addNewJobTitleButton.Name = "addNewJobTitleButton";
-            this.addNewJobTitleButton.Size = new System.Drawing.Size(322, 23);
+            this.addNewJobTitleButton.Size = new System.Drawing.Size(423, 23);
             this.addNewJobTitleButton.TabIndex = 2;
             this.addNewJobTitleButton.Text = "Добавить";
             this.addNewJobTitleButton.UseVisualStyleBackColor = true;
@@ -74,12 +74,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(330, 422);
+            this.ClientSize = new System.Drawing.Size(431, 422);
             this.Controls.Add(this.addNewJobTitleButton);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EditJobTitles";
-            this.Text = "Редактирование списка должностей";
+            this.Text = "Должности";
             ((System.ComponentModel.ISupportInitialize)(this.jobTitlesTable)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

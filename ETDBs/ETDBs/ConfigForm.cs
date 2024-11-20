@@ -20,11 +20,14 @@ namespace ETDBs
 
             config = _config;
 
-            okButton.Click += (s, e) => this.Close();
-            ValueReady();
+            okButton.Click += (s, e) => { this.DialogResult = DialogResult.OK; this.Close(); };
+            
+            Ready();
+            
+            Program.SetFormSize(this);
         }
 
-        private void ValueReady()
+        private void Ready()
         {
             modeComboBox.SelectedIndex = config.ProgramMode;
             modeComboBox.SelectedIndexChanged += (s, e) => config.ProgramMode = modeComboBox.SelectedIndex;
@@ -34,6 +37,27 @@ namespace ETDBs
 
             notifyComboBox.SelectedIndex = config.notificationLevel;
             notifyComboBox.SelectedIndexChanged += (s, e) => config.notificationLevel = notifyComboBox.SelectedIndex;
+
+            alwaysConfigComboBox.Checked = config.alwaysConfig;
+            alwaysConfigComboBox.CheckedChanged += (s, e) => config.alwaysConfig = alwaysConfigComboBox.Checked;
+
+            startWithSystemCheckBox.CheckedChanged += (s, e) => { config.startWithSystem = startWithSystemCheckBox.Checked; AutoStartManager.SetAutoStart(config.startWithSystem); };
+            startWithSystemCheckBox.Checked = config.startWithSystem;
+
+            textSizeNumeric.Value = config.textSize;
+            textSizeNumeric.ValueChanged += (s, e) => { config.textSize = (int)textSizeNumeric.Value; Program.SetFormSize(this); };
+
+            minutsToNotifyNum.Value = config.notificationInterval;
+            minutsToNotifyNum.ValueChanged += (s, e) => config.notificationInterval = (int)minutsToNotifyNum.Value;
+
+            daysToNotifyNum.Value = config.maxDaysToNotifyAboutEvent;
+            daysToNotifyNum.ValueChanged += (s, e) => config.maxDaysToNotifyAboutEvent = (int)daysToNotifyNum.Value;
+
+            notifyWhenNotHidedCheckBox.Checked = config.notifyWhenProgramIsNotHided;
+            notifyWhenNotHidedCheckBox.CheckedChanged += (s, e) => config.notifyWhenProgramIsNotHided = notifyWhenNotHidedCheckBox.Checked;
+
+            startHidedCheckBox.Checked = config.startHided;
+            startHidedCheckBox.CheckedChanged += (s, e) => config.startHided = startHidedCheckBox.Checked;
         }
     }
 }

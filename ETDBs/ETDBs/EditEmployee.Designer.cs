@@ -34,10 +34,6 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.jobTitleComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.hireDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.medDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.attributesTable = new System.Windows.Forms.DataGridView();
@@ -68,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 57);
+            this.label2.Location = new System.Drawing.Point(12, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 2;
@@ -77,47 +73,15 @@
             // jobTitleComboBox
             // 
             this.jobTitleComboBox.FormattingEnabled = true;
-            this.jobTitleComboBox.Location = new System.Drawing.Point(15, 73);
+            this.jobTitleComboBox.Location = new System.Drawing.Point(15, 64);
             this.jobTitleComboBox.Name = "jobTitleComboBox";
-            this.jobTitleComboBox.Size = new System.Drawing.Size(324, 21);
+            this.jobTitleComboBox.Size = new System.Drawing.Size(157, 21);
             this.jobTitleComboBox.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Дата прохождения медосмотра";
-            // 
-            // hireDate
-            // 
-            this.hireDate.Location = new System.Drawing.Point(15, 123);
-            this.hireDate.Name = "hireDate";
-            this.hireDate.Size = new System.Drawing.Size(324, 20);
-            this.hireDate.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 155);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Дата найма";
-            // 
-            // medDate
-            // 
-            this.medDate.Location = new System.Drawing.Point(15, 171);
-            this.medDate.Name = "medDate";
-            this.medDate.Size = new System.Drawing.Size(324, 20);
-            this.medDate.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 203);
+            this.label5.Location = new System.Drawing.Point(176, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 8;
@@ -126,9 +90,9 @@
             // statusComboBox
             // 
             this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(18, 219);
+            this.statusComboBox.Location = new System.Drawing.Point(179, 64);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(321, 21);
+            this.statusComboBox.Size = new System.Drawing.Size(157, 21);
             this.statusComboBox.TabIndex = 9;
             // 
             // attributesTable
@@ -151,7 +115,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.attributesTable.DefaultCellStyle = dataGridViewCellStyle2;
-            this.attributesTable.Location = new System.Drawing.Point(18, 268);
+            this.attributesTable.Location = new System.Drawing.Point(15, 104);
             this.attributesTable.Name = "attributesTable";
             this.attributesTable.Size = new System.Drawing.Size(316, 121);
             this.attributesTable.TabIndex = 10;
@@ -159,7 +123,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 252);
+            this.label6.Location = new System.Drawing.Point(12, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(160, 13);
             this.label6.TabIndex = 11;
@@ -167,18 +131,18 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(18, 424);
+            this.cancelButton.Location = new System.Drawing.Point(15, 231);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(321, 23);
+            this.cancelButton.Size = new System.Drawing.Size(160, 23);
             this.cancelButton.TabIndex = 12;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(18, 395);
+            this.confirmButton.Location = new System.Drawing.Point(179, 231);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(316, 23);
+            this.confirmButton.Size = new System.Drawing.Size(157, 23);
             this.confirmButton.TabIndex = 13;
             this.confirmButton.Text = "Подтвердить";
             this.confirmButton.UseVisualStyleBackColor = true;
@@ -199,7 +163,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(351, 452);
+            this.ClientSize = new System.Drawing.Size(351, 264);
             this.Controls.Add(this.nameCheckIcon);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.cancelButton);
@@ -207,10 +171,6 @@
             this.Controls.Add(this.attributesTable);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.medDate);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.hireDate);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.jobTitleComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nameTextBox);
@@ -218,7 +178,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EditEmployee";
-            this.Text = "Добавление нового сотрудника";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Сотрудник";
             ((System.ComponentModel.ISupportInitialize)(this.attributesTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameCheckIcon)).EndInit();
             this.ResumeLayout(false);
@@ -232,10 +193,6 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox jobTitleComboBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker hireDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker medDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.DataGridView attributesTable;
