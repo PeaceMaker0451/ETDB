@@ -44,8 +44,8 @@ namespace ETDBs
             startWithSystemCheckBox.CheckedChanged += (s, e) => { config.startWithSystem = startWithSystemCheckBox.Checked; AutoStartManager.SetAutoStart(config.startWithSystem); };
             startWithSystemCheckBox.Checked = config.startWithSystem;
 
-            textSizeNumeric.Value = config.textSize;
-            textSizeNumeric.ValueChanged += (s, e) => { config.textSize = (int)textSizeNumeric.Value; Program.SetFormSize(this); };
+            fontSize.Value = config.textSize;
+            fontSize.ValueChanged += (s, e) => { config.textSize = (int)fontSize.Value; Program.SetFormSize(this); };
 
             minutsToNotifyNum.Value = config.notificationInterval;
             minutsToNotifyNum.ValueChanged += (s, e) => config.notificationInterval = (int)minutsToNotifyNum.Value;
@@ -58,6 +58,12 @@ namespace ETDBs
 
             startHidedCheckBox.Checked = config.startHided;
             startHidedCheckBox.CheckedChanged += (s, e) => config.startHided = startHidedCheckBox.Checked;
+
+            RedDays.Value = config.redDates;
+            RedDays.ValueChanged += (s, e) => { config.redDates = (int)RedDays.Value; };
+
+            yellowDays.ValueChanged += (s, e) => { RedDays.Maximum = yellowDays.Value; config.yellowDates = (int)yellowDays.Value; };
+            yellowDays.Value = config.yellowDates;
         }
     }
 }

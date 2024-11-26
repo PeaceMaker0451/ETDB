@@ -61,7 +61,6 @@
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licenseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readMeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
@@ -180,6 +179,7 @@
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(100, 29);
+            this.searchTextBox.Text = "Поиск";
             // 
             // toolStripSeparator2
             // 
@@ -328,8 +328,7 @@
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutMenuItem,
-            this.licenseMenuItem,
-            this.readMeMenuItem});
+            this.licenseMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справкаToolStripMenuItem.Text = "О программе";
@@ -337,20 +336,14 @@
             // aboutMenuItem
             // 
             this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutMenuItem.Size = new System.Drawing.Size(127, 22);
             this.aboutMenuItem.Text = "Справка";
             // 
             // licenseMenuItem
             // 
             this.licenseMenuItem.Name = "licenseMenuItem";
-            this.licenseMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.licenseMenuItem.Size = new System.Drawing.Size(127, 22);
             this.licenseMenuItem.Text = "Лицензия";
-            // 
-            // readMeMenuItem
-            // 
-            this.readMeMenuItem.Name = "readMeMenuItem";
-            this.readMeMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.readMeMenuItem.Text = "ReadMe";
             // 
             // notifyIcon1
             // 
@@ -367,7 +360,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Базы данных событий v. 0.4.12";
+            this.textBox1.Text = "Базы данных событий v. 1.0.0";
             // 
             // EventsPlanning
             // 
@@ -434,7 +427,6 @@
         private System.Windows.Forms.ToolStripMenuItem exportEventsTableMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licenseMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem readMeMenuItem;
         private System.Windows.Forms.TextBox textBox1;
     }
 }

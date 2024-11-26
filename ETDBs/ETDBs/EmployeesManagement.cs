@@ -36,8 +36,48 @@ namespace ETDBs
             refreshButton.Click += RefreshButton_Click;
 
             configMenuItem.Click += (s, e) => { this.DialogResult = DialogResult.Retry; this.Close(); };
-            справкаToolStripMenuItem.Click += (s, e) => { new TextDisplayForm("Справка", "Справка").ShowDialog(); };
-            
+            справкаToolStripMenuItem.Click += (s, e) => { new About().ShowDialog(); };
+
+            exportButton.Click += (s, e) =>
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Сохранить как";
+                    saveFileDialog.DefaultExt = "xlsx";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = "NewTable";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Получаем путь выбранного файла
+                        string filePath = saveFileDialog.FileName;
+
+                        ExcelTablesManager.ExportToExcel(employeesTable, "Events", filePath);
+                    }
+                }
+            };
+
+            экспортироватьВExcelТаблицуToolStripMenuItem.Click += (s, e) =>
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Сохранить как";
+                    saveFileDialog.DefaultExt = "xlsx";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = "NewTable";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Получаем путь выбранного файла
+                        string filePath = saveFileDialog.FileName;
+
+                        ExcelTablesManager.ExportToExcel(employeesTable, "Events", filePath);
+                    }
+                }
+            };
+
             лицензияToolStripMenuItem.Click += (s, e) => 
             {
                 try
@@ -63,34 +103,8 @@ namespace ETDBs
                 }
             };
 
-            readMeToolStripMenuItem.Click += (s, e) =>
-            {
-                try
-                {
-                    string licenseFilePath = Path.Combine(Application.StartupPath, "ReadMe.txt");
-
-                    // Проверяем существует ли файл
-                    if (File.Exists(licenseFilePath))
-                    {
-                        string licenseContent = File.ReadAllText(licenseFilePath);
-
-                        //MessageBox.Show(licenseContent, "License Content", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        new TextDisplayForm("ReadMe", licenseContent).ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Файл {licenseFilePath} Не был найден.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка чтения файла: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
             добавитьДолжностьToolStripMenuItem.Click += EditJobTitlesButton_Click;
             добавитьДопПолеToolStripMenuItem.Click += AddAttributeButton_Click;
-            добавитьСтатусToolStripMenuItem.Click += AddStatusButton_Click;
             обновитьToolStripMenuItem.Click += (s,e) => RefreshTable();
 
             searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text;  SetEmployeesTable(); };
@@ -134,12 +148,12 @@ namespace ETDBs
 
         private void AddAttributeButton_Click(object sender, EventArgs e)
         {
-            string name = InputDialog.ShowDialog("Имя нового параметра");
+            string name = InputDialog.ShowDialog("Имя нового дополнительного поля");
             if(name != null)
             {
                 try
                 {
-                    dbManager.AddOrUpdateEmployeeAttribute(1, name, "");
+                    dbManager.AddOrUpdateEmployeeAttribute(0, name, "");
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -334,7 +348,8 @@ namespace ETDBs
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"{ex.Message}");
+                            if(!(ex is InvalidOperationException))
+                                MessageBox.Show($"{ex.Message}");
                         }
 
                         if (config.notificationLevel >= 1)
@@ -366,6 +381,41 @@ namespace ETDBs
                 if (result == DialogResult.Yes)
                     dbManager.DeleteEmployee(employeeId);
 
+                RefreshTable();
+            }
+        }
+
+        private void deleteAttribute_Click(object sender, EventArgs e)
+        {
+            string name = InputDialog.ShowDialog("Удаление дполнительного поля");
+            if (name != null)
+            {
+
+
+                DialogResult result = MessageBox.Show(
+                  $"Вы собираетесь удалить доп поле '{name}' и все хранимые в нем значения.\nЭто действие невозможно обратить\n\nВы уверены?",
+                  "Удаление сотрудника",
+                  MessageBoxButtons.YesNo,
+                  MessageBoxIcon.Warning
+              );
+
+                // Проверка результата
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        dbManager.DeleteEmployeeAttributeGlobally(name);
+                        if (config.notificationLevel >= 1)
+                            MessageBox.Show($"Аттрибут '{name}' Удален!");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        if (config.notificationLevel < 2)
+                            MessageBox.Show($"Невозможно удалить дополнительное поле - {ex.Message}");
+                        else
+                            MessageBox.Show($"Невозможно удалить дополнительное поле - {ex.ToString()}");
+                    }
+                }
                 RefreshTable();
             }
         }

@@ -24,6 +24,9 @@ namespace ETDBs
         public int maxDaysToNotifyAboutEvent = 14;
         public bool simplifyNotifications = true;
 
+        public int yellowDates = 31;
+        public int redDates = 14;
+
         public void SaveToFile(string filePath)
         {
             try

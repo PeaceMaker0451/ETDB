@@ -36,10 +36,10 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.refreshBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.addEventButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addEventButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -122,7 +122,7 @@
             this.toolStripSeparator1,
             this.addEventButton,
             this.toolStripSeparator2,
-            this.toolStripButton1});
+            this.exportButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(540, 29);
@@ -143,6 +143,11 @@
             this.refreshBar.Name = "refreshBar";
             this.refreshBar.Size = new System.Drawing.Size(100, 26);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 29);
+            // 
             // addEventButton
             // 
             this.addEventButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -152,24 +157,19 @@
             this.addEventButton.Size = new System.Drawing.Size(26, 26);
             this.addEventButton.Text = "Добавить новое событие";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::ETDBs.Properties.Resources.file_export_24dp_273849_FILL0_wght400_GRAD0_opsz24;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(26, 26);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 29);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 29);
+            // 
+            // exportButton
+            // 
+            this.exportButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportButton.Image = global::ETDBs.Properties.Resources.file_export_24dp_273849_FILL0_wght400_GRAD0_opsz24;
+            this.exportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(26, 26);
+            this.exportButton.Text = "Экспортировать в Excel";
             // 
             // EditTitlesEvents
             // 
@@ -209,6 +209,6 @@
         private System.Windows.Forms.ToolStripButton addEventButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton exportButton;
     }
 }

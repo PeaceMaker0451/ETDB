@@ -1,13 +1,15 @@
 {
-  "ProgramMode": 2,
-  "DBConnectionPath": "Server=127.0.0.1;Database=EmployeesEventsDB;User Id=test;Password=test;TrustServerCertificate=True;",
+  "ProgramMode": 1,
+  "DBConnectionPath": "Server=85.88.175.244,1433;Database=EmployeesEventsDB;User Id=test;Password=test;TrustServerCertificate=True;",
   "notificationLevel": 0,
   "alwaysConfig": false,
-  "startWithSystem": false,
+  "startWithSystem": true,
   "textSize": 9,
   "startHided": false,
   "notifyWhenProgramIsNotHided": false,
-  "notificationInterval": 5,
+  "notificationInterval": 2,
   "maxDaysToNotifyAboutEvent": 31,
-  "simplifyNotifications": true
+  "simplifyNotifications": true,
+  "yellowDates": 1000,
+  "redDates": 31
 }

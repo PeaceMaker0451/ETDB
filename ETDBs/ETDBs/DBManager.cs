@@ -442,6 +442,21 @@ namespace ETDBs
             {
                 connection.Open();
 
+                // Если employeeId равен 0, найти первого сотрудника
+                if (employeeId == 0)
+                {
+                    var findFirstEmployeeCommand = new SqlCommand("SELECT TOP 1 EmployeeID FROM Employees", connection);
+                    var result = findFirstEmployeeCommand.ExecuteScalar();
+
+                    if (result == null)
+                    {
+                        throw new InvalidOperationException("В базе данных нет сотрудников.");
+                    }
+
+                    employeeId = (int)result;
+                }
+
+                // Проверяем, существует ли указанный сотрудник
                 var checkEmployeeCommand = new SqlCommand("SELECT COUNT(*) FROM Employees WHERE EmployeeID = @EmployeeID", connection);
                 checkEmployeeCommand.Parameters.AddWithValue("@EmployeeID", employeeId);
 
@@ -451,15 +466,16 @@ namespace ETDBs
                     throw new InvalidOperationException("Сотрудник с указанным ID не существует.");
                 }
 
+                // MERGE для добавления или обновления атрибута
                 var command = new SqlCommand(@"
-        MERGE EmployeeAttributes AS target
-        USING (SELECT @EmployeeID AS EmployeeID, @AttributeName AS AttributeName) AS source
-        ON target.EmployeeID = source.EmployeeID AND target.AttributeName = source.AttributeName
-        WHEN MATCHED THEN 
-            UPDATE SET target.AttributeValue = @AttributeValue
-        WHEN NOT MATCHED THEN
-            INSERT (EmployeeID, AttributeName, AttributeValue)
-            VALUES (@EmployeeID, @AttributeName, @AttributeValue);", connection);
+MERGE EmployeeAttributes AS target
+USING (SELECT @EmployeeID AS EmployeeID, @AttributeName AS AttributeName) AS source
+ON target.EmployeeID = source.EmployeeID AND target.AttributeName = source.AttributeName
+WHEN MATCHED THEN 
+    UPDATE SET target.AttributeValue = @AttributeValue
+WHEN NOT MATCHED THEN
+    INSERT (EmployeeID, AttributeName, AttributeValue)
+    VALUES (@EmployeeID, @AttributeName, @AttributeValue);", connection);
 
                 command.Parameters.AddWithValue("@EmployeeID", employeeId);
                 command.Parameters.AddWithValue("@AttributeName", attributeName);
@@ -930,14 +946,14 @@ WHERE e.EmployeeID = @EmployeeID", connection);
                 try
                 {
                     // Delete related TitleEventDates
-                    var command = new SqlCommand("DELETE FROM TitlesEventsDates WHERE EventID = @EventID", connection, transaction);
+                    var command = new SqlCommand("DELETE FROM EmployeesEvents WHERE EventID = @EventID", connection, transaction);
                     command.Parameters.AddWithValue("@EventID", eventId);
                     command.ExecuteNonQuery();
 
-                    // Delete the event itself
-                    command = new SqlCommand("DELETE FROM Events WHERE EventID = @EventID", connection, transaction);
-                    command.Parameters.AddWithValue("@EventID", eventId);
-                    command.ExecuteNonQuery();
+                    //// Delete the event itself
+                    //command = new SqlCommand("DELETE FROM Events WHERE EventID = @EventID", connection, transaction);
+                    //command.Parameters.AddWithValue("@EventID", eventId);
+                    //command.ExecuteNonQuery();
 
                     transaction.Commit();
                 }
@@ -972,15 +988,22 @@ WHERE e.EmployeeID = @EmployeeID", connection);
 
                 try
                 {
-                    // Delete related TitleEventDates
-                    var command = new SqlCommand("DELETE FROM TitlesEventsDates WHERE EventID = @EventID AND EmployeeID IN (SELECT EmployeeID FROM Employees WHERE JobTitleID = @JobTitleID)", connection, transaction);
+                    // Delete related TitleEventDates for the specified JobTitle and Event
+                    var command = new SqlCommand(@"
+                DELETE FROM TitlesEventsDates
+                WHERE EventID = @EventID 
+                AND EmployeeID IN (SELECT EmployeeID FROM Employees WHERE JobTitleID = @JobTitleID)", connection, transaction);
+
                     command.Parameters.AddWithValue("@EventID", eventId);
                     command.Parameters.AddWithValue("@JobTitleID", jobTitleId);
                     command.ExecuteNonQuery();
 
-                    // Delete the JobTitle itself if applicable
-                    command = new SqlCommand("DELETE FROM JobTitles WHERE JobTitleID = @JobTitleID", connection, transaction);
-                    command.Parameters.AddWithValue("@JobTitleID", jobTitleId);
+                    // Delete the event itself from TitlesEvents
+                    command = new SqlCommand(@"
+                DELETE FROM TitlesEvents
+                WHERE EventID = @EventID", connection, transaction);
+
+                    command.Parameters.AddWithValue("@EventID", eventId);
                     command.ExecuteNonQuery();
 
                     transaction.Commit();

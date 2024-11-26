@@ -103,6 +103,16 @@ namespace ETDBs.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ETDBico {
+            get {
+                object obj = ResourceManager.GetObject("ETDBico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap event_24dp_273849_FILL0_wght400_GRAD200_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("event_24dp_273849_FILL0_wght400_GRAD200_opsz24", resourceCulture);

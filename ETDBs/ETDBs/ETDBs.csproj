@@ -105,6 +105,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="AutoStartManager.cs" />
     <Compile Include="ConfigForm.cs">
       <SubType>Form</SubType>
@@ -188,6 +194,9 @@
     <Compile Include="TextDisplayForm.Designer.cs">
       <DependentUpon>TextDisplayForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,16 +299,11 @@
     <None Include="Resources\ETDB.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\ETDBico.png" />
     <SplashScreen Include="ETDB.png" />
     <Content Include="ETDBico.ico" />
     <Content Include="LICENSE.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ReadMe.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\file_export_24dp_273849_FILL0_wght400_GRAD0_opsz24.png" />
   </ItemGroup>

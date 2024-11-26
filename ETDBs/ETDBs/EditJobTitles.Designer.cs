@@ -78,6 +78,7 @@
             this.Controls.Add(this.addNewJobTitleButton);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "EditJobTitles";
             this.Text = "Должности";
             ((System.ComponentModel.ISupportInitialize)(this.jobTitlesTable)).EndInit();

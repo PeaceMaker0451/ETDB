@@ -55,7 +55,7 @@ namespace ETDBs
         private void SetDefaultValues()
         {
             eName = nameTextBox.Text;
-            eTitle = (int)jobTitleComboBox.SelectedValue;
+            eTitle = jobTitleComboBox.SelectedValue != null? (int)jobTitleComboBox.SelectedValue : 0;
             eStatus = (int)statusComboBox.SelectedValue;
             eAttributes = (DataTable)attributesTable.DataSource;
         }

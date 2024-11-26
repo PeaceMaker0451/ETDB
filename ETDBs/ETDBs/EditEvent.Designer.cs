@@ -83,9 +83,19 @@
             // toNextNumeric
             // 
             this.toNextNumeric.Location = new System.Drawing.Point(15, 121);
+            this.toNextNumeric.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.toNextNumeric.Name = "toNextNumeric";
             this.toNextNumeric.Size = new System.Drawing.Size(61, 20);
             this.toNextNumeric.TabIndex = 4;
+            this.toNextNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -143,6 +153,7 @@
             // 
             // nextEventDate
             // 
+            this.nextEventDate.Enabled = false;
             this.nextEventDate.Location = new System.Drawing.Point(15, 211);
             this.nextEventDate.Name = "nextEventDate";
             this.nextEventDate.Size = new System.Drawing.Size(200, 20);
@@ -177,6 +188,7 @@
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "EditEvent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Событие";

@@ -25,7 +25,16 @@ namespace ETDBs
 
         static void LoadAndRunApplication()
         {
-            configPath = Path.Combine(Application.StartupPath, "config.json");
+            string localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+            // Создаем папку для вашей программы, если она еще не создана
+            string programFolder = Path.Combine(localAppDataPath, "ETDB");
+            if (!Directory.Exists(programFolder))
+            {
+                Directory.CreateDirectory(programFolder);
+            }
+
+            configPath = Path.Combine(programFolder, "config.json");
             config = LoadOrInitializeConfig();
 
             var configForm = new ConfigForm(config);

@@ -232,7 +232,7 @@ namespace ETDBs
 
             if (simplify && i > 0)
             {
-                MessageBox.Show($"Требуют внимания событий: {i}.\n\n{simplifiedMessage}", "Уведомление о событии", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Требуют внимания событий: {i}.\n\n{simplifiedMessage}", "Уведомление о событиях", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }

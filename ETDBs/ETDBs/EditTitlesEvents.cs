@@ -28,7 +28,44 @@ namespace ETDBs
             addEventButton.Click += AddEventButton_Click;
             jobTitlesList.SelectedIndexChanged += JobTitlesList_SelectedIndexChanged;
             eventsTable.DataBindingComplete += EventsTable_DataBindingComplete;
+
+            exportButton.Click += (s, e) =>
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Сохранить как";
+                    saveFileDialog.DefaultExt = "xlsx";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = "NewTable";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Получаем путь выбранного файла
+                        string filePath = saveFileDialog.FileName;
+
+                        ExcelTablesManager.ExportToExcel(eventsTable, "Events", filePath);
+                    }
+                }
+            };
+
             RefreshTable();
+
+            try
+            {
+                if(jobTitlesList.Items.Count > 0)
+                {
+                    int selectedEmployeeID = (int)jobTitlesList.SelectedValue;
+                    selectedID = selectedEmployeeID;
+                    RefreshTable();
+                }
+                
+            }
+            catch
+            {
+
+            }
+            
 
             Program.SetFormSize(this);
         }
@@ -156,13 +193,23 @@ namespace ETDBs
 
             var editButtonColumn = new DataGridViewButtonColumn
             {
-                HeaderText = "Редактирование",
+                HeaderText = "Редактирование должностного события",
                 Text = "Редактировать",
                 UseColumnTextForButtonValue = true,
                 Name = "EditButton"
             };
             eventsTable.Columns.Add(editButtonColumn);
             eventsTable.Columns["EditButton"].DisplayIndex = 1;
+
+            var deleteButtonColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "Удаление должностного события",
+                Text = "Удалить",
+                UseColumnTextForButtonValue = true,
+                Name = "DeleteButton"
+            };
+            eventsTable.Columns.Add(deleteButtonColumn);
+            eventsTable.Columns["DeleteButton"].DisplayIndex = eventsTable.Columns.Count - 1;
 
             eventsTable.CellClick += EventsTable_CellClick;
         }
@@ -190,9 +237,11 @@ namespace ETDBs
 
         private void EventsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int eventId = 0;
+
             if (e.ColumnIndex == eventsTable.Columns["EditButton"].Index && e.RowIndex >= 0)
             {
-                int eventId = 0;
+                
 
                 try
                 {
@@ -235,7 +284,54 @@ namespace ETDBs
                 }
                 else
                 {
-                    MessageBox.Show("Невозможно изменить сотрудника.");
+                    MessageBox.Show("Невозможно изменить должность.");
+                }
+            }
+            else if (e.ColumnIndex == eventsTable.Columns["DeleteButton"].Index && e.RowIndex >= 0)
+            {
+                try
+                {
+                    eventId = Convert.ToInt32(eventsTable.Rows[e.RowIndex].Cells["EventID"].Value);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}");
+                }
+
+                DataTable eventData = dbManager.GetJobTitleEventTable(selectedID, eventId);
+
+                if (eventData.Rows.Count > 0)
+                {
+                    DataRow row = eventData.Rows[0];
+
+                    var name = row["EventName"];
+                    var toNext = row["ToNext"];
+                    var isMonths = row["IsMonths"];
+                    var oneTime = row["OneTime"];
+
+                    DialogResult result = MessageBox.Show(
+                   $"Вы собираетесь удалить личное событие '{name}'.\nЭто действие невозможно обратить\n\nВы уверены?",
+                   "Удаление даты события",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning
+               );
+
+                    // Проверка результата
+                    try
+                    {
+                        if (result == DialogResult.Yes)
+                            dbManager.DeleteJobTitleEvent(selectedID, eventId);
+                        RefreshTable();
+                    }
+                    catch(Exception ex)
+                    {
+                        new TextDisplayForm("Ошибка", ex.ToString()).Show();
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Невозможно удалить должность.");
                 }
             }
         }

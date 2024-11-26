@@ -54,7 +54,6 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.лицензияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.viewEmployeeMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aboutTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -266,6 +265,7 @@
             this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
             this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.обновитьToolStripMenuItem.Text = "Обновить";
+            this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
             // правкаToolStripMenuItem
             // 
@@ -288,19 +288,20 @@
             this.добавитьЛичноеСобытиеToolStripMenuItem.Name = "добавитьЛичноеСобытиеToolStripMenuItem";
             this.добавитьЛичноеСобытиеToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
             this.добавитьЛичноеСобытиеToolStripMenuItem.Text = "Добавить личное событие";
+            this.добавитьЛичноеСобытиеToolStripMenuItem.Click += new System.EventHandler(this.добавитьЛичноеСобытиеToolStripMenuItem_Click);
             // 
             // редактироватьДолжностныеСобытияToolStripMenuItem
             // 
             this.редактироватьДолжностныеСобытияToolStripMenuItem.Name = "редактироватьДолжностныеСобытияToolStripMenuItem";
             this.редактироватьДолжностныеСобытияToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
             this.редактироватьДолжностныеСобытияToolStripMenuItem.Text = "Редактировать должностные события";
+            this.редактироватьДолжностныеСобытияToolStripMenuItem.Click += new System.EventHandler(this.редактироватьДолжностныеСобытияToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem1,
-            this.лицензияToolStripMenuItem,
-            this.readMeToolStripMenuItem});
+            this.лицензияToolStripMenuItem});
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
@@ -308,20 +309,14 @@
             // оПрограммеToolStripMenuItem1
             // 
             this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
-            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem1.Text = "Справка";
             // 
             // лицензияToolStripMenuItem
             // 
             this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
-            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.лицензияToolStripMenuItem.Text = "Лицензия";
-            // 
-            // readMeToolStripMenuItem
-            // 
-            this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
-            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.readMeToolStripMenuItem.Text = "ReadMe";
             // 
             // textBox1
             // 
@@ -332,7 +327,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Базы данных событий v. 0.4.12";
+            this.textBox1.Text = "Базы данных событий v. 1.0.0";
             // 
             // viewEmployeeMenuStrip
             // 
@@ -419,7 +414,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewAllTool;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem лицензияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem readMeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьЛичноеСобытиеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактироватьДолжностныеСобытияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;

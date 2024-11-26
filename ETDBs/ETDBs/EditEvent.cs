@@ -39,6 +39,9 @@ namespace ETDBs
             StartDate = DateTime.Today;
             Mode = mode;
 
+            this.AcceptButton = okButton;
+            this.CancelButton = cancelButton;
+
             Ready();
         }
 
@@ -63,15 +66,34 @@ namespace ETDBs
             nameBox.Text = Name;
             nameBox.TextChanged += (s, e) => Name = nameBox.Text;
 
+            if (OneTime)
+            {
+                toNextNumeric.Minimum = 0;
+            }
+            else
+            {
+                toNextNumeric.Minimum = 1;
+            }
+
             startDate.Value = StartDate;
             startDate.ValueChanged += (s, e) => { StartDate = startDate.Value; UpdateNextDate(); baseExpired = 0; };
 
-            toNextNumeric.Value = ToNext;
-            toNextNumeric.ValueChanged += (s, e) => 
-            { 
-                ToNext = (int)toNextNumeric.Value; 
-                UpdateNextDate(); 
+            try
+            {
+                toNextNumeric.Value = ToNext;
+            }
+            catch
+            {
+                ToNext = 1;
+                toNextNumeric.Value = 1;
+            }
+            toNextNumeric.ValueChanged += (s, e) =>
+            {
+                ToNext = (int)toNextNumeric.Value;
+                UpdateNextDate();
             };
+
+
 
             SetIsMonthCombo(IsMonths);
             isMonthsCombo.SelectedIndexChanged += (s, e) => 
@@ -92,12 +114,15 @@ namespace ETDBs
                 {
                     toNextNumeric.Enabled = false;
                     isMonthsCombo.Enabled = false;
+                    toNextNumeric.Minimum = 0;
                     toNextNumeric.Value = 0;
+
                 }
                 else
                 {
                     toNextNumeric.Enabled = true;
                     isMonthsCombo.Enabled = true;
+                    toNextNumeric.Minimum = 1;
                 }
             };
 

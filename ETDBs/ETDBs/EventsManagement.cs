@@ -38,8 +38,10 @@ namespace ETDBs
             viewAllTool.Click += ViewAllTool_Click;
 
             configMenuItem.Click += (s, e) => { this.DialogResult = DialogResult.Retry; this.Close(); };
+            refreshButton.Click += (s,e) => RefreshTable();
 
-            лицензияToolStripMenuItem.Click += (s, e) =>
+            оПрограммеToolStripMenuItem1.Click += (s, e) => { new About().ShowDialog(); };
+            лицензияToolStripMenuItem.Click += (s, e) => 
             {
                 try
                 {
@@ -64,32 +66,23 @@ namespace ETDBs
                 }
             };
 
-            readMeToolStripMenuItem.Click += (s, e) =>
-            {
-                try
-                {
-                    string licenseFilePath = Path.Combine(Application.StartupPath, "ReadMe.txt");
-
-                    // Проверяем существует ли файл
-                    if (File.Exists(licenseFilePath))
-                    {
-                        string licenseContent = File.ReadAllText(licenseFilePath);
-
-                        //MessageBox.Show(licenseContent, "License Content", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        new TextDisplayForm("ReadMe", licenseContent).ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Файл {licenseFilePath} Не был найден.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка чтения файла: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
             RefreshTable();
+            try
+            {
+                if (employeesList.Items.Count > 0)
+                {
+                    int selectedEmployeeID = (int)employeesList.SelectedValue;
+                    selectedID = selectedEmployeeID;
+                    RefreshTable();
+                }
+                    
+            }
+            catch
+            {
+
+            }
+            
+
             Program.SetFormSize(this);
         }
 
@@ -384,9 +377,11 @@ namespace ETDBs
 
         private void TitleEventsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int eventId = 0;
+
             if (e.ColumnIndex == titleEventsTable.Columns["EditButton"].Index && e.RowIndex >= 0)
             {
-                int eventId = 0;
+                
 
                 try
                 {
@@ -444,7 +439,61 @@ namespace ETDBs
                 }
                 else
                 {
-                    MessageBox.Show("Невозможно изменить сотрудника.");
+                    MessageBox.Show("Невозможно изменить событие.");
+                }
+            }
+            else if (e.ColumnIndex == titleEventsTable.Columns["DeleteButton"].Index && e.RowIndex >= 0)
+            {
+                try
+                {
+                    eventId = Convert.ToInt32(titleEventsTable.Rows[e.RowIndex].Cells["EventID"].Value);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}");
+                }
+
+                DataTable eventData = dbManager.GetEmployeeJobTitleEventTable(selectedID, eventId);
+
+                if (eventData.Rows.Count > 0)
+                {
+                    DataRow row = eventData.Rows[0];
+
+                    var name = row["EventName"];
+                    var startDate = row["StartDate"];
+                    var toNext = row["ToNext"];
+                    var isMonths = row["IsMonths"];
+                    var oneTime = row["OneTime"];
+                    var expired = row["Expired"];
+
+                    if (startDate == DBNull.Value || !DateTime.TryParse(startDate.ToString(), out DateTime startDateValue))
+                    {
+                        startDateValue = DateTime.Today;
+                    }
+                    if (oneTime == DBNull.Value)
+                    {
+                        oneTime = false;
+                    }
+                    if (expired == DBNull.Value)
+                    {
+                        expired = 0;
+                    }
+
+                    DialogResult result = MessageBox.Show(
+                   $"Вы собираетесь удалить дату должостного события '{name}'. Событие перестанет отображаться в планировании и дату можно будет выставить заново.\nЭто действие невозможно обратить\n\nВы уверены?",
+                   "Удаление даты события",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning
+               );
+
+                    // Проверка результата
+                    if (result == DialogResult.Yes)
+                        dbManager.DeleteTitleEventDate(selectedID, eventId);
+                    RefreshTable();
+                }
+                else
+                {
+                    MessageBox.Show("Невозможно удалить событие.");
                 }
             }
         }
@@ -554,9 +603,11 @@ namespace ETDBs
 
         private void EmployeeEventsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int eventId = 0;
+
             if (e.ColumnIndex == employeeEventsTable.Columns["EditButton"].Index && e.RowIndex >= 0)
             {
-                int eventId = 0;
+                
 
                 try
                 {
@@ -601,9 +652,78 @@ namespace ETDBs
                 }
                 else
                 {
-                    MessageBox.Show("Невозможно изменить сотрудника.");
+                    MessageBox.Show("Невозможно изменить событие.");
                 }
             }
+            else if (e.ColumnIndex == employeeEventsTable.Columns["DeleteButton"].Index && e.RowIndex >= 0)
+            {
+                try
+                {
+                    eventId = Convert.ToInt32(employeeEventsTable.Rows[e.RowIndex].Cells["EventID"].Value);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}");
+                }
+
+                DataTable eventData = dbManager.GetEmployeeEventTable(selectedID, eventId);
+
+                if (eventData.Rows.Count > 0)
+                {
+                    DataRow row = eventData.Rows[0];
+
+                    var name = row["EventName"];
+                    var startDate = row["StartDate"];
+                    var toNext = row["ToNext"];
+                    var isMonths = row["IsMonths"];
+                    var oneTime = row["OneTime"];
+                    var expired = row["Expired"];
+
+                    if (startDate == DBNull.Value || !DateTime.TryParse(startDate.ToString(), out DateTime startDateValue))
+                    {
+                        startDateValue = DateTime.Today;
+                    }
+                    if (oneTime == DBNull.Value)
+                    {
+                        oneTime = false;
+                    }
+                    if (expired == DBNull.Value)
+                    {
+                        expired = 0;
+                    }
+
+                    DialogResult result = MessageBox.Show(
+                   $"Вы собираетесь удалить личное событие '{name}'.\nЭто действие невозможно обратить\n\nВы уверены?",
+                   "Удаление даты события",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning
+               );
+
+                    // Проверка результата
+                    if (result == DialogResult.Yes)
+                        dbManager.DeleteEvent(eventId);
+                    RefreshTable();
+                }
+                else
+                {
+                    MessageBox.Show("Невозможно удалить событие.");
+                }
+            }
+        }
+
+        private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshTable();
+        }
+
+        private void добавитьЛичноеСобытиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEmployeeEventButton_Click(sender,e);
+        }
+
+        private void редактироватьДолжностныеСобытияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditTitleEventsButton_Click(sender, e);
         }
     }
 }

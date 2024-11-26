@@ -96,7 +96,7 @@ namespace ETDBs
 
                 DialogResult result = MessageBox.Show(
                    $"Вы собираетесь удалить должность '{name}', всех сотрудников этой должности (!!!) и все, что с ними связано.\nЭто действие невозможно обратить\n\nВы уверены?",
-                   "Удаление сотрудника",
+                   "Удаление должности",
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Warning
                );

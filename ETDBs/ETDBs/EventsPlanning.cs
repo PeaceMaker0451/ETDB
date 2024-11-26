@@ -56,6 +56,7 @@ namespace ETDBs
             exportEmployeesTableButton.Click += ExportEmployeesTableButton_Click;
             exportEmployeesTableMenuItem.Click += ExportEmployeesTableButton_Click;
 
+            aboutMenuItem.Click += (s, e) => { new About().ShowDialog(); };
             licenseMenuItem.Click += (s, e) =>
             {
                 try
@@ -81,32 +82,7 @@ namespace ETDBs
                 }
             };
 
-            readMeMenuItem.Click += (s, e) =>
-            {
-                try
-                {
-                    string licenseFilePath = Path.Combine(Application.StartupPath, "ReadMe.txt");
-
-                    // Проверяем существует ли файл
-                    if (File.Exists(licenseFilePath))
-                    {
-                        string licenseContent = File.ReadAllText(licenseFilePath);
-
-                        //MessageBox.Show(licenseContent, "License Content", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        new TextDisplayForm("ReadMe", licenseContent).ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Файл {licenseFilePath} Не был найден.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка чтения файла: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
-            searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text; RefreshTable(); };
+            searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text; RefreshTableAsync(); };
             RefreshTable();
 
             if (config.notifyWhenProgramIsNotHided)
@@ -114,6 +90,8 @@ namespace ETDBs
 
             if (config.startHided)
                 this.Load += (s,e) => this.WindowState = FormWindowState.Minimized;
+
+            this.FormClosed += (s, e) => this.notifyIcon1.Visible = false;
 
             Program.SetFormSize(this);
         }
@@ -164,11 +142,11 @@ namespace ETDBs
         {
             if (this.InvokeRequired)
             {
-                this.BeginInvoke((MethodInvoker)(async () => await RefreshTable()));
+                this.BeginInvoke((MethodInvoker)(async () => RefreshTable()));
             }
             else
             {
-                await RefreshTable();
+                RefreshTable();
             }
 
             NotifyAboutDeadLines();
@@ -207,9 +185,10 @@ namespace ETDBs
             
             if (this.WindowState == FormWindowState.Minimized )
             {
-                formIsHided = true;
+                //this.TopMost = true;
+                //formIsHided = true;
                 notifyIcon1.Visible = true;
-                this.ShowInTaskbar = false;
+                //this.ShowInTaskbar = false;
 
                 notifyIcon1.BalloonTipTitle = "ETDB - Программа свернута.";
                 notifyIcon1.BalloonTipText = "Программа скрыта и продолжит работать в фоне. \nЧтобы снова открыть окно, нажмите дважды на ярлык программы в трее.";
@@ -219,14 +198,46 @@ namespace ETDBs
                 if(!config.notifyWhenProgramIsNotHided)
                     timer = new System.Threading.Timer(TimerCallback, null, 0, 60000 * config.notificationInterval);
             }
+            if(this.WindowState == FormWindowState.Normal)
+            {
+                notifyIcon1.Visible = false;
+                //this.ShowInTaskbar = true;
+
+                if (!config.notifyWhenProgramIsNotHided)
+                    timer?.Dispose();
+            }
         }
 
         private void NotifyAboutDeadLines()
         {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)(() => this.TopMost = true));
+            }
             TablesTools.NotifyEvents(eventsTable, config.maxDaysToNotifyAboutEvent, config.simplifyNotifications, notifyIcon1);
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)(() => this.TopMost = false));
+            }
         }
 
-        public async Task RefreshTable()
+        public void RefreshTable()
+        {
+            try
+            {
+                UpdateEmployeesTable();
+                UpdateEventsTable();
+            }
+            catch(Exception ex)
+            {
+                if(config.notificationLevel > 1)
+                {
+                    MessageBox.Show($"Ошибка обновления таблиц - {ex}");
+                }
+            } 
+        }
+
+        public async Task RefreshTableAsync()
         {
             try
             {
@@ -246,9 +257,9 @@ namespace ETDBs
                 await UpdateEmployeesTable();
                 await UpdateEventsTable();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(config.notificationLevel > 1)
+                if (config.notificationLevel > 1)
                 {
                     MessageBox.Show($"Ошибка обновления таблиц - {ex}");
                 }
@@ -265,7 +276,7 @@ namespace ETDBs
                 {
                     MessageBox.Show($"Ошибка обращения к интерфейсу - {ex}");
                 }
-            }     
+            }
         }
 
         private void FillFilters()
@@ -317,7 +328,12 @@ namespace ETDBs
             employeesTable.Columns.Clear();
 
             // Присваиваем таблицу DataGridView
-            filteredEmployeesData = TablesTools.SearchInDataTable(TablesTools.FilterDataTable(TablesTools.FilterDataTable(employeesData, titleFilterText, "JobTitle"), statusFilterText, "Status"), searchText);
+            try
+            {
+                filteredEmployeesData = TablesTools.SearchInDataTable(TablesTools.FilterDataTable(TablesTools.FilterDataTable(employeesData, titleFilterText, "JobTitle"), statusFilterText, "Status"), searchText);
+            }
+            catch { }
+            
             employeesTable.DataSource = filteredEmployeesData;
             employeesTable.ReadOnly = true;
             employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -411,7 +427,12 @@ namespace ETDBs
             eventsTable.ReadOnly = true;
             eventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            TablesTools.CopyDataTableToDataGridView(dbManager.GetAllEmployeesEvents(filteredEmployeesData), eventsTable);
+            try
+            {
+                TablesTools.CopyDataTableToDataGridView(dbManager.GetAllEmployeesEvents(filteredEmployeesData), eventsTable);
+            }
+            catch { }
+            
 
             var deadLineColumn = new DataGridViewTextBoxColumn
             {
@@ -462,24 +483,36 @@ namespace ETDBs
                 Name = "ViewedButton"
             };
             eventsTable.Columns.Add(markAsViewedColumn);
-            eventsTable.Columns["ViewedButton"].DisplayIndex = 10;
+            eventsTable.Columns["ViewedButton"].DisplayIndex = eventsTable.ColumnCount - 1;
 
-            eventsTable.Columns["EmployeeName"].HeaderText = "ФИО";
-            eventsTable.Columns["JobTitle"].HeaderText = "Должность";
-            eventsTable.Columns["EventName"].HeaderText = "Событие";
-            
-            if(config.notificationLevel < 2)
+            try
             {
-                eventsTable.Columns["EmployeeID"].Visible = false;
-                eventsTable.Columns["EventID"].Visible = false;
-                eventsTable.Columns["EventDate"].Visible = false;
-                eventsTable.Columns["OneTime"].Visible = false;
-                eventsTable.Columns["Expired"].Visible = false;
-                eventsTable.Columns["ToNext"].Visible = false;
-                eventsTable.Columns["IsMonths"].Visible = false;
-                eventsTable.Columns["DeadLine"].Visible = false;
-                eventsTable.Columns["IsTitleEvent"].Visible = false;
+                eventsTable.Columns["EmployeeName"].HeaderText = "ФИО";
+                eventsTable.Columns["JobTitle"].HeaderText = "Должность";
+                eventsTable.Columns["EventName"].HeaderText = "Событие";
+                eventsTable.Columns["Expired"].HeaderText = "Было просмотренно раз:";
+
+                if (config.notificationLevel < 2)
+                {
+                    eventsTable.Columns["EmployeeID"].Visible = false;
+                    eventsTable.Columns["EventID"].Visible = false;
+                    eventsTable.Columns["EventDate"].Visible = false;
+                    eventsTable.Columns["OneTime"].Visible = false;
+                    eventsTable.Columns["ToNext"].Visible = false;
+                    eventsTable.Columns["IsMonths"].Visible = false;
+                    eventsTable.Columns["DeadLine"].Visible = false;
+                    eventsTable.Columns["IsTitleEvent"].Visible = false;
+                }
             }
+            catch(Exception ex)
+            {
+                if (config.notificationLevel > 1)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            
+            
 
             foreach (DataGridViewRow row in eventsTable.Rows)
             {
@@ -525,12 +558,12 @@ namespace ETDBs
 
                                         row.Cells["UrgencyLevel"].Value = $"{deadLineValue} дней";
 
-                                        if (deadLineValue >= 31)
+                                        if (deadLineValue >= config.yellowDates)
                                         {
                                             row.Cells["UrgencyLevel"].Style.BackColor = Color.DarkGreen;
                                             row.Cells["UrgencyLevel"].Style.ForeColor = Color.White;
                                         }
-                                        else if (deadLineValue >= 7)
+                                        else if (deadLineValue >= config.redDates)
                                         {
                                             row.Cells["UrgencyLevel"].Style.BackColor = Color.DarkGoldenrod;
                                             row.Cells["UrgencyLevel"].Style.ForeColor = Color.White;
@@ -594,21 +627,45 @@ namespace ETDBs
                 // Проверка результата
                 if (result == DialogResult.Yes)
                 {
-                    var isTitle = (bool)eventsTable.Rows[e.RowIndex].Cells["IsTitleEvent"].Value;
-                    var employeeID = (int)eventsTable.Rows[e.RowIndex].Cells["EmployeeID"].Value;
-                    var eventID = (int)eventsTable.Rows[e.RowIndex].Cells["EventID"].Value;
-                    var startDate = (DateTime)eventsTable.Rows[e.RowIndex].Cells["EventDate"].Value;
-                    var nextEventDate = (DateTime)eventsTable.Rows[e.RowIndex].Cells["NextEventDate"].Value;
-                    var expired = (int)eventsTable.Rows[e.RowIndex].Cells["Expired"].Value; //NextEventDate
+                    bool isTitle;
+                    int employeeID;
+                    int eventID;
+                    DateTime startDate;
+                    DateTime nextEventDate;
+                    int expired;
+
+                    try
+                    {
+                        isTitle = (bool)eventsTable.Rows[e.RowIndex].Cells["IsTitleEvent"].Value;
+                        employeeID = (int)eventsTable.Rows[e.RowIndex].Cells["EmployeeID"].Value;
+                        eventID = (int)eventsTable.Rows[e.RowIndex].Cells["EventID"].Value;
+                        startDate = (DateTime)eventsTable.Rows[e.RowIndex].Cells["EventDate"].Value;
+                        nextEventDate = (DateTime)eventsTable.Rows[e.RowIndex].Cells["NextEventDate"].Value;
+                        expired = (int)eventsTable.Rows[e.RowIndex].Cells["Expired"].Value; //NextEventDate
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"Это событие не может быть просмотренно");
+                        return;
+                    }
 
                     if (isTitle)
                     {
-                        dbManager.AddOrUpdateJobTitleEventDate(employeeID, eventID, startDate, expired + 1);
+                        try
+                        {
+                            dbManager.AddOrUpdateJobTitleEventDate(employeeID, eventID, startDate, expired + 1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show($"Событие {name} ({nextEventDate}) не может быть просмотренно");
+                            return;
+                        }
+                        
                         
                         if (config.notificationLevel >= 1)
                             MessageBox.Show($"Событие {name} от {nextEventDate} успешно зачтено");
 
-                        RefreshTable();
+                        RefreshTableAsync();
                     }
                     else
                     {
@@ -616,12 +673,21 @@ namespace ETDBs
                         var isMonths = (bool)eventsTable.Rows[e.RowIndex].Cells["IsMonths"].Value;
                         var timeToNext = (int)eventsTable.Rows[e.RowIndex].Cells["ToNext"].Value;
 
-                        dbManager.UpdateEmployeeEvent(employeeID, eventID, name.ToString(), startDate, timeToNext, isMonths, oneTime, expired + 1);
+                        
+                        try
+                        {
+                            dbManager.UpdateEmployeeEvent(employeeID, eventID, name.ToString(), startDate, timeToNext, isMonths, oneTime, expired + 1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show($"Событие {name} ({nextEventDate}) не может быть просмотренно");
+                            return;
+                        }
 
                         if (config.notificationLevel >= 1)
                             MessageBox.Show($"Событие {name} от {nextEventDate} успешно зачтено");
 
-                        RefreshTable();
+                        RefreshTableAsync();
                     }
                 }
             }
@@ -631,11 +697,6 @@ namespace ETDBs
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
-            formIsHided = false;
-            notifyIcon1.Visible = false;
-
-            if (!config.notifyWhenProgramIsNotHided)
-                timer?.Dispose();
         }
     }
 }
