@@ -323,7 +323,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Базы данных событий v. 1.0.0";
+            this.textBox1.Text = "Базы данных событий v. 1.0.1";
             // 
             // EmployeesManagement
             // 

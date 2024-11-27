@@ -250,7 +250,9 @@ namespace ETDBs
         {
             employeesList.DataSource = null;
             employeesList.Items.Clear();
-            var employees = Employee.GetEmployees(dbManager);
+            var employees = Employee.GetEmployees(dbManager)
+                            .OrderBy(e => e.DisplayText) // Сортировка по DisplayText
+                            .ToList();
 
             employeesList.DataSource = employees;
             employeesList.DisplayMember = nameof(Employee.DisplayText);

@@ -309,13 +309,13 @@
             // оПрограммеToolStripMenuItem1
             // 
             this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
-            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.оПрограммеToolStripMenuItem1.Text = "Справка";
             // 
             // лицензияToolStripMenuItem
             // 
             this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
-            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.лицензияToolStripMenuItem.Text = "Лицензия";
             // 
             // textBox1
@@ -327,7 +327,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Базы данных событий v. 1.0.0";
+            this.textBox1.Text = "Базы данных событий v. 1.0.1";
             // 
             // viewEmployeeMenuStrip
             // 

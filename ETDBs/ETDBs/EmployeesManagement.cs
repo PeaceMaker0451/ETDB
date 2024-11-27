@@ -109,9 +109,8 @@ namespace ETDBs
 
             searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text;  SetEmployeesTable(); };
 
-            UpdateEmployeesTable();
-
             FillFilters();
+            RefreshTable();
             Program.SetFormSize(this);
         }
 
@@ -143,6 +142,7 @@ namespace ETDBs
                     MessageBox.Show($"Статус '{name}' добавлен!");
 
                 RefreshTable();
+                FillFilters();
             }
         }
 
@@ -163,7 +163,8 @@ namespace ETDBs
                 if (config.notificationLevel >= 1)
                     MessageBox.Show($"Аттрибут '{name}' добавлен!");
                 
-                RefreshTable(); 
+                RefreshTable();
+                FillFilters();
             }
         }
 
@@ -354,7 +355,8 @@ namespace ETDBs
 
                         if (config.notificationLevel >= 1)
                             MessageBox.Show($"Сотрудник '{form.eName}' обновлен!");
-                        
+
+                        FillFilters();
                         RefreshTable();
                     }
                 }
@@ -417,6 +419,7 @@ namespace ETDBs
                     }
                 }
                 RefreshTable();
+                FillFilters();
             }
         }
     }

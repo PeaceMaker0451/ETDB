@@ -56,9 +56,11 @@
             // 
             // nameTextBox
             // 
+            this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.Location = new System.Drawing.Point(15, 25);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(298, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(359, 20);
             this.nameTextBox.TabIndex = 1;
             // 
             // label2
@@ -72,16 +74,19 @@
             // 
             // jobTitleComboBox
             // 
+            this.jobTitleComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.jobTitleComboBox.FormattingEnabled = true;
             this.jobTitleComboBox.Location = new System.Drawing.Point(15, 64);
             this.jobTitleComboBox.Name = "jobTitleComboBox";
-            this.jobTitleComboBox.Size = new System.Drawing.Size(157, 21);
+            this.jobTitleComboBox.Size = new System.Drawing.Size(218, 21);
             this.jobTitleComboBox.TabIndex = 3;
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(176, 48);
+            this.label5.Location = new System.Drawing.Point(237, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 8;
@@ -89,14 +94,18 @@
             // 
             // statusComboBox
             // 
+            this.statusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(179, 64);
+            this.statusComboBox.Location = new System.Drawing.Point(240, 64);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(157, 21);
             this.statusComboBox.TabIndex = 9;
             // 
             // attributesTable
             // 
+            this.attributesTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.attributesTable.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -117,7 +126,7 @@
             this.attributesTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.attributesTable.Location = new System.Drawing.Point(15, 104);
             this.attributesTable.Name = "attributesTable";
-            this.attributesTable.Size = new System.Drawing.Size(316, 121);
+            this.attributesTable.Size = new System.Drawing.Size(377, 238);
             this.attributesTable.TabIndex = 10;
             // 
             // label6
@@ -131,7 +140,8 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(15, 231);
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cancelButton.Location = new System.Drawing.Point(15, 348);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(160, 23);
             this.cancelButton.TabIndex = 12;
@@ -140,18 +150,21 @@
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(179, 231);
+            this.confirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.confirmButton.Location = new System.Drawing.Point(179, 348);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(157, 23);
+            this.confirmButton.Size = new System.Drawing.Size(218, 23);
             this.confirmButton.TabIndex = 13;
             this.confirmButton.Text = "Подтвердить";
             this.confirmButton.UseVisualStyleBackColor = true;
             // 
             // nameCheckIcon
             // 
+            this.nameCheckIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nameCheckIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.nameCheckIcon.Image = global::ETDBs.Properties.Resources.error_23dp_BB271A_FILL0_wght700_GRAD0_opsz24;
-            this.nameCheckIcon.Location = new System.Drawing.Point(319, 25);
+            this.nameCheckIcon.Location = new System.Drawing.Point(380, 25);
             this.nameCheckIcon.Name = "nameCheckIcon";
             this.nameCheckIcon.Size = new System.Drawing.Size(20, 21);
             this.nameCheckIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -163,7 +176,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(351, 264);
+            this.ClientSize = new System.Drawing.Size(412, 381);
             this.Controls.Add(this.nameCheckIcon);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.cancelButton);
@@ -176,7 +189,7 @@
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.Name = "EditEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

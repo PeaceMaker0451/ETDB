@@ -142,7 +142,7 @@ namespace ETDBs
         {
             jobTitlesList.DataSource = null;
             jobTitlesList.Items.Clear();
-            var titles = JobTitle.GetJobTitles(dbManager);
+            var titles = JobTitle.GetJobTitles(dbManager).OrderBy(e => e.JobTitleName).ToList();
 
             jobTitlesList.DataSource = titles;
             jobTitlesList.DisplayMember = nameof(JobTitle.JobTitleName);
