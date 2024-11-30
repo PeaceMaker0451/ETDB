@@ -230,7 +230,7 @@ namespace ETDBs
             employeesTable.Columns.Clear();
 
             employeesTable.DataSource = TablesTools.SearchInDataTable(TablesTools.FilterDataTable(TablesTools.FilterDataTable(employeesData, titleFilterText, "JobTitle"), statusFilterText,"Status"), searchText);
-            employeesTable.ReadOnly = true;
+            //employeesTable.ReadOnly = true;
             employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             employeesTable.Columns["EmployeeID"].Visible = false;
             employeesTable.Columns["FullName"].DisplayIndex = 1;
@@ -243,6 +243,24 @@ namespace ETDBs
 
             employeesTable.AllowUserToAddRows = false;
 
+            var selectCheckBoxColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "Выделение строк",
+                Name = "SelectCheckBox"
+            };
+            employeesTable.Columns.Add(selectCheckBoxColumn);
+            employeesTable.Columns["SelectCheckBox"].DisplayIndex = 0;
+
+            var exportButtonColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "Экспорт сотрудника по шаблону",
+                Text = "Экспортировать",
+                UseColumnTextForButtonValue = true,
+                Name = "ExportButton"
+            };
+            employeesTable.Columns.Add(exportButtonColumn);
+            employeesTable.Columns["ExportButton"].DisplayIndex = 1;
+
             var editButtonColumn = new DataGridViewButtonColumn
             {
                 HeaderText = "Редактирование сотрудника",
@@ -251,7 +269,7 @@ namespace ETDBs
                 Name = "EditButton"
             };
             employeesTable.Columns.Add(editButtonColumn);
-            employeesTable.Columns["EditButton"].DisplayIndex = 2;
+            employeesTable.Columns["EditButton"].DisplayIndex = 4;
 
             // Подписываемся на событие для обработки нажатия на кнопку
             employeesTable.CellClick += DataGridViewEmployees_CellClick;
@@ -266,6 +284,12 @@ namespace ETDBs
             employeesTable.Columns.Add(deleteButtonColumn);
             employeesTable.Columns["DeleteButton"].DisplayIndex = employeesTable.Columns.Count - 1;
 
+            foreach (DataGridViewColumn column in employeesTable.Columns)
+            {
+                column.ReadOnly = true;
+            }
+
+            employeesTable.Columns["SelectCheckBox"].ReadOnly = false;
         }
 
         private void FillFilters()
@@ -384,6 +408,10 @@ namespace ETDBs
                     dbManager.DeleteEmployee(employeeId);
 
                 RefreshTable();
+            }
+            else if (e.ColumnIndex == employeesTable.Columns["ExportButton"].Index && e.RowIndex >= 0)
+            {
+
             }
         }
 

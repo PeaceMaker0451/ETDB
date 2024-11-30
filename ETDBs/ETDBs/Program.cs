@@ -34,6 +34,18 @@ namespace ETDBs
                 Directory.CreateDirectory(programFolder);
             }
 
+            string folderPath = Path.Combine(programFolder, "Documents");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            folderPath = Path.Combine(programFolder, "Tables");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
             configPath = Path.Combine(programFolder, "config.json");
             config = LoadOrInitializeConfig();
 

@@ -111,6 +111,152 @@ namespace ETDBs
             }
         }
 
+        public DataTable GetAllEmployeesEventsWithAttributes(DataTable filteredEmployeesData)
+        {
+            var employeeIds = filteredEmployeesData.AsEnumerable().Select(row => (int)row["EmployeeID"]).ToList();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                // Получение уникальных имен атрибутов
+                var command = new SqlCommand("SELECT DISTINCT AttributeName FROM EmployeeAttributes", connection);
+                var reader = command.ExecuteReader();
+                var attributeNames = new List<string>();
+
+                while (reader.Read())
+                {
+                    attributeNames.Add(reader.GetString(0));
+                }
+                reader.Close();
+
+                // Запрос для событий сотрудников
+                var employeeEventsQuery = @"
+        SELECT e.EmployeeID, e.FullName, j.Title AS JobTitle, 
+               ee.EventID, ee.EventName, ee.StartDate, 
+               ee.OneTime, ee.Expired, ee.ToNext, ee.IsMonths
+        FROM Employees e
+        JOIN JobTitles j ON e.JobTitleID = j.JobTitleID
+        JOIN EmployeesEvents ee ON e.EmployeeID = ee.EmployeeID
+        WHERE e.EmployeeID IN (" + string.Join(",", employeeIds) + ")";
+
+                // Запрос для событий должностей
+                var titleEventsQuery = @"
+        SELECT e.EmployeeID, e.FullName, j.Title AS JobTitle, 
+               te.EventID, te.EventName, ted.StartDate, 
+               te.OneTime, ted.Expired, te.ToNext, te.IsMonths
+        FROM Employees e
+        JOIN JobTitles j ON e.JobTitleID = j.JobTitleID
+        JOIN TitlesEvents te ON j.JobTitleID = te.JobTitleID
+        JOIN TitlesEventsDates ted ON ted.EventID = te.EventID AND ted.EmployeeID = e.EmployeeID
+        WHERE e.EmployeeID IN (" + string.Join(",", employeeIds) + ")";
+
+                // Формирование основного DataTable с учетом атрибутов
+                var combinedEventsTable = new DataTable();
+                combinedEventsTable.Columns.Add("EmployeeID", typeof(int));
+                combinedEventsTable.Columns.Add("EmployeeName", typeof(string));
+                combinedEventsTable.Columns.Add("JobTitle", typeof(string));
+                combinedEventsTable.Columns.Add("EventID", typeof(int));
+                combinedEventsTable.Columns.Add("EventName", typeof(string));
+                combinedEventsTable.Columns.Add("EventDate", typeof(DateTime));
+                combinedEventsTable.Columns.Add("OneTime", typeof(bool));
+                combinedEventsTable.Columns.Add("Expired", typeof(int));
+                combinedEventsTable.Columns.Add("ToNext", typeof(int));
+                combinedEventsTable.Columns.Add("IsMonths", typeof(bool));
+                combinedEventsTable.Columns.Add("IsTitleEvent", typeof(bool));
+
+                foreach (var attributeName in attributeNames)
+                {
+                    combinedEventsTable.Columns.Add(attributeName, typeof(string));
+                }
+
+                // Заполнение таблицы данными о событиях сотрудников
+                var employeeEventsCommand = new SqlCommand(employeeEventsQuery, connection);
+                var employeeEventsReader = employeeEventsCommand.ExecuteReader();
+
+                while (employeeEventsReader.Read())
+                {
+                    var row = combinedEventsTable.NewRow();
+                    row["EmployeeID"] = employeeEventsReader["EmployeeID"];
+                    row["EmployeeName"] = employeeEventsReader["FullName"];
+                    row["JobTitle"] = employeeEventsReader["JobTitle"];
+                    row["EventID"] = employeeEventsReader["EventID"];
+                    row["EventName"] = employeeEventsReader["EventName"];
+                    row["EventDate"] = employeeEventsReader["StartDate"];
+                    row["OneTime"] = employeeEventsReader["OneTime"];
+                    row["Expired"] = employeeEventsReader["Expired"];
+                    row["ToNext"] = employeeEventsReader["ToNext"];
+                    row["IsMonths"] = employeeEventsReader["IsMonths"];
+                    row["IsTitleEvent"] = false;
+                    combinedEventsTable.Rows.Add(row);
+                }
+                employeeEventsReader.Close();
+
+                // Заполнение таблицы данными о событиях должностей
+                var titleEventsCommand = new SqlCommand(titleEventsQuery, connection);
+                var titleEventsReader = titleEventsCommand.ExecuteReader();
+
+                while (titleEventsReader.Read())
+                {
+                    var row = combinedEventsTable.NewRow();
+                    row["EmployeeID"] = titleEventsReader["EmployeeID"];
+                    row["EmployeeName"] = titleEventsReader["FullName"];
+                    row["JobTitle"] = titleEventsReader["JobTitle"];
+                    row["EventID"] = titleEventsReader["EventID"];
+                    row["EventName"] = titleEventsReader["EventName"];
+                    row["EventDate"] = titleEventsReader["StartDate"];
+                    row["OneTime"] = titleEventsReader["OneTime"];
+                    row["Expired"] = titleEventsReader["Expired"];
+                    row["ToNext"] = titleEventsReader["ToNext"];
+                    row["IsMonths"] = titleEventsReader["IsMonths"];
+                    row["IsTitleEvent"] = true;
+                    combinedEventsTable.Rows.Add(row);
+                }
+                titleEventsReader.Close();
+
+                // Запрос и добавление атрибутов
+                var attributesQuery = @"
+        SELECT ea.EmployeeID, ea.AttributeName, ea.AttributeValue
+        FROM EmployeeAttributes ea
+        WHERE ea.EmployeeID IN (" + string.Join(",", employeeIds) + ")";
+                var attributesCommand = new SqlCommand(attributesQuery, connection);
+                var attributesReader = attributesCommand.ExecuteReader();
+
+                var attributesDict = new Dictionary<int, Dictionary<string, string>>();
+
+                while (attributesReader.Read())
+                {
+                    var employeeId = (int)attributesReader["EmployeeID"];
+                    var attributeName = (string)attributesReader["AttributeName"];
+                    var attributeValue = (string)attributesReader["AttributeValue"];
+
+                    if (!attributesDict.ContainsKey(employeeId))
+                    {
+                        attributesDict[employeeId] = new Dictionary<string, string>();
+                    }
+                    attributesDict[employeeId][attributeName] = attributeValue;
+                }
+                attributesReader.Close();
+
+                // Добавление атрибутов к существующим строкам
+                foreach (DataRow row in combinedEventsTable.Rows)
+                {
+                    var employeeId = (int)row["EmployeeID"];
+                    if (attributesDict.ContainsKey(employeeId))
+                    {
+                        foreach (var attributeName in attributeNames)
+                        {
+                            row[attributeName] = attributesDict[employeeId].ContainsKey(attributeName)
+                                ? attributesDict[employeeId][attributeName]
+                                : null;
+                        }
+                    }
+                }
+
+                return combinedEventsTable;
+            }
+        }
+
         public DataTable GetAllEmployeesEvents(DataTable filteredEmployeesData)
         {
             var employeeIds = filteredEmployeesData.AsEnumerable().Select(row => (int)row["EmployeeID"]).ToList();

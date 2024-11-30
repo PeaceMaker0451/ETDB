@@ -82,6 +82,8 @@ namespace ETDBs
                 }
             };
 
+            //toolStripButton1.Click += (s,e) => new TemplateDocumentExport(DocsDirectory.Tables).Show();
+
             searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text; RefreshTableAsync(); };
             RefreshTable();
 
@@ -210,15 +212,7 @@ namespace ETDBs
 
         private void NotifyAboutDeadLines()
         {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)(() => this.TopMost = true));
-            }
             TablesTools.NotifyEvents(eventsTable, config.maxDaysToNotifyAboutEvent, config.simplifyNotifications, notifyIcon1);
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)(() => this.TopMost = false));
-            }
         }
 
         public void RefreshTable()
@@ -327,7 +321,6 @@ namespace ETDBs
             employeesTable.CellClick -= DataGridViewEmployees_CellClick;
             employeesTable.Columns.Clear();
 
-            // Присваиваем таблицу DataGridView
             try
             {
                 filteredEmployeesData = TablesTools.SearchInDataTable(TablesTools.FilterDataTable(TablesTools.FilterDataTable(employeesData, titleFilterText, "JobTitle"), statusFilterText, "Status"), searchText);
@@ -424,12 +417,11 @@ namespace ETDBs
             eventsTable.Columns.Clear();
             eventsTable.AllowUserToAddRows = false;
 
-            eventsTable.ReadOnly = true;
             eventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             try
             {
-                TablesTools.CopyDataTableToDataGridView(dbManager.GetAllEmployeesEvents(filteredEmployeesData), eventsTable);
+                TablesTools.CopyDataTableToDataGridView(dbManager.GetAllEmployeesEventsWithAttributes(filteredEmployeesData), eventsTable);
             }
             catch { }
             
@@ -450,7 +442,7 @@ namespace ETDBs
                 HeaderText = "Осталось дней",
                 ReadOnly = true,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DisplayIndex = 1
+                DisplayIndex = 0
             };
             eventsTable.Columns.Add(urgencyColumn);
 
@@ -483,7 +475,32 @@ namespace ETDBs
                 Name = "ViewedButton"
             };
             eventsTable.Columns.Add(markAsViewedColumn);
-            eventsTable.Columns["ViewedButton"].DisplayIndex = eventsTable.ColumnCount - 1;
+            eventsTable.Columns["ViewedButton"].DisplayIndex = 0;
+
+            var exportColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "Экспортировать событие по шаблону",
+                Text = "Экспортировать",
+                UseColumnTextForButtonValue = true,
+                Name = "ExportButton"
+            };
+            eventsTable.Columns.Add(exportColumn);
+            eventsTable.Columns["ExportButton"].DisplayIndex = 2;
+
+            var selectCheckBoxColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "Выделение строк",
+                Name = "SelectCheckBox"
+            };
+            eventsTable.Columns.Add(selectCheckBoxColumn);
+            eventsTable.Columns["SelectCheckBox"].DisplayIndex = 1;
+
+            foreach (DataGridViewColumn column in eventsTable.Columns)
+            {
+                column.ReadOnly = true;
+            }
+
+            eventsTable.Columns["SelectCheckBox"].ReadOnly = false;
 
             try
             {
@@ -690,6 +707,37 @@ namespace ETDBs
                         RefreshTableAsync();
                     }
                 }
+            }
+            else if (e.ColumnIndex == eventsTable.Columns["ExportButton"].Index && e.RowIndex >= 0)
+            {
+                var clickedRow = eventsTable.Rows[e.RowIndex];
+
+                // Инициализируем словарь
+                Dictionary<string, string> rowData = new Dictionary<string, string>();
+
+                // Проходим по всем колонкам строки
+                foreach (DataGridViewColumn column in eventsTable.Columns)
+                {
+                    // Пропускаем колонки с кнопками и чекбоксами
+                    if (column is DataGridViewButtonColumn || column is DataGridViewCheckBoxColumn)
+                        continue;
+
+                    // Получаем видимое имя колонки
+                    string columnName = column.HeaderText;
+
+                    // Получаем значение ячейки
+                    var cellValue = clickedRow.Cells[column.Index].Value;
+
+                    // Если значение является DateTime, форматируем его, иначе преобразуем в строку
+                    string formattedValue = cellValue is DateTime dateValue
+                        ? dateValue.ToString("dd.MM.yyyy")
+                        : cellValue?.ToString() ?? string.Empty;
+
+                    // Добавляем в словарь
+                    rowData[columnName] = formattedValue;
+                }
+
+                new TemplateDocumentExport(rowData).ShowDialog();
             }
         }
 
