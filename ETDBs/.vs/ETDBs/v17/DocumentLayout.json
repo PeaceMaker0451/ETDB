@@ -3,48 +3,59 @@
   "WorkspaceRootPath": "D:\\Projs\\Git\\ETDBs\\ETDBs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\documenthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\documenthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\documentgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\documentgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\configform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\configform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\configform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\configform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\edittitlesevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\edittitlesevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\templatedocumentexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\templatedocumentexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\documentsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\documentsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Peace\\AppData\\Local\\SourceServer\\7c2afcc49b294ada0ddbafb4cfe7fb58ff31126d241671fa2c10377bc6c5397a\\ooxml\\XSSF\\UserModel\\XSSFCell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\tagextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\tagextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\templatedocumentexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\templatedocumentexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\exceltablesmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\exceltablesmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\webbrowserviewerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\webbrowserviewerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\webbrowserviewerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\webbrowserviewerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +65,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 197,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,59 +73,134 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConfigForm.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ConfigForm.cs",
+              "RelativeDocumentMoniker": "ETDBs\\ConfigForm.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ConfigForm.cs",
+              "RelativeToolTip": "ETDBs\\ConfigForm.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwCYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T06:38:41.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConfigForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ConfigForm.cs",
+              "RelativeDocumentMoniker": "ETDBs\\ConfigForm.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ConfigForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "ETDBs\\ConfigForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T06:33:54.447Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "XSSFCell.cs",
+              "DocumentMoniker": "C:\\Users\\Peace\\AppData\\Local\\SourceServer\\7c2afcc49b294ada0ddbafb4cfe7fb58ff31126d241671fa2c10377bc6c5397a\\ooxml\\XSSF\\UserModel\\XSSFCell.cs",
+              "ToolTip": "C:\\Users\\Peace\\AppData\\Local\\SourceServer\\7c2afcc49b294ada0ddbafb4cfe7fb58ff31126d241671fa2c10377bc6c5397a\\ooxml\\XSSF\\UserModel\\XSSFCell.cs",
+              "ViewState": "AgIAAKEBAAAAAAAAAAAmwLcBAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T17:14:19.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TagExtractor.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TagExtractor.cs",
+              "RelativeDocumentMoniker": "ETDBs\\TagExtractor.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TagExtractor.cs",
+              "RelativeToolTip": "ETDBs\\TagExtractor.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T13:14:11.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DocumentGenerator.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DocumentGenerator.cs",
+              "RelativeDocumentMoniker": "ETDBs\\DocumentGenerator.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DocumentGenerator.cs",
+              "RelativeToolTip": "ETDBs\\DocumentGenerator.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAowGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:53:46.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EditTitlesEvents.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EditTitlesEvents.cs",
+              "RelativeDocumentMoniker": "ETDBs\\EditTitlesEvents.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EditTitlesEvents.cs",
+              "RelativeToolTip": "ETDBs\\EditTitlesEvents.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T11:59:04.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DocumentHandler.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DocumentHandler.cs",
+              "RelativeDocumentMoniker": "ETDBs\\DocumentHandler.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DocumentHandler.cs",
+              "RelativeToolTip": "ETDBs\\DocumentHandler.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAmwOIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T11:46:14.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "DBManager.cs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DBManager.cs",
               "RelativeDocumentMoniker": "ETDBs\\DBManager.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DBManager.cs",
               "RelativeToolTip": "ETDBs\\DBManager.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAiwHEAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T11:25:25.917Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ExcelTablesManager.cs",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ExcelTablesManager.cs",
-              "RelativeDocumentMoniker": "ETDBs\\ExcelTablesManager.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ExcelTablesManager.cs",
-              "RelativeToolTip": "ETDBs\\ExcelTablesManager.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAowHgAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T08:46:29.932Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\Program.cs",
               "RelativeDocumentMoniker": "ETDBs\\Program.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\Program.cs",
               "RelativeToolTip": "ETDBs\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAxwDUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T08:15:46.789Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "TemplateDocumentExport.cs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TemplateDocumentExport.cs",
               "RelativeDocumentMoniker": "ETDBs\\TemplateDocumentExport.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TemplateDocumentExport.cs",
               "RelativeToolTip": "ETDBs\\TemplateDocumentExport.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAWwHMAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAowL8AAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T08:15:25.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "TemplateDocumentExport.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TemplateDocumentExport.cs",
               "RelativeDocumentMoniker": "ETDBs\\TemplateDocumentExport.cs",
@@ -126,45 +212,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "WebBrowserViewerForm.cs",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\WebBrowserViewerForm.cs",
-              "RelativeDocumentMoniker": "ETDBs\\WebBrowserViewerForm.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\WebBrowserViewerForm.cs",
-              "RelativeToolTip": "ETDBs\\WebBrowserViewerForm.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwEYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T07:39:00.667Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "WebBrowserViewerForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\WebBrowserViewerForm.cs",
-              "RelativeDocumentMoniker": "ETDBs\\WebBrowserViewerForm.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\WebBrowserViewerForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "ETDBs\\WebBrowserViewerForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T07:38:56.571Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "EventsPlanning.cs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
               "RelativeDocumentMoniker": "ETDBs\\EventsPlanning.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
               "RelativeToolTip": "ETDBs\\EventsPlanning.cs",
-              "ViewState": "AgIAANQBAAAAAAAAAAAQwN0BAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAAFYAAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T07:33:51.252Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "EventsPlanning.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
               "RelativeDocumentMoniker": "ETDBs\\EventsPlanning.cs",
@@ -176,13 +237,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "EmployeesManagement.cs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs",
               "RelativeDocumentMoniker": "ETDBs\\EmployeesManagement.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs",
               "RelativeToolTip": "ETDBs\\EmployeesManagement.cs",
-              "ViewState": "AgIAAAABAAAAAAAAAAAYwCMBAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwDYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T07:15:22.913Z",
               "EditorCaption": ""
@@ -190,8 +251,8 @@
           ]
         },
         {
-          "DockedWidth": 139,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 22,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -200,19 +261,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DocumentsManager.cs",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DocumentsManager.cs",
-              "RelativeDocumentMoniker": "ETDBs\\DocumentsManager.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DocumentsManager.cs",
-              "RelativeToolTip": "ETDBs\\DocumentsManager.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAswBcAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T07:12:08.425Z",
-              "EditorCaption": ""
             }
           ]
         },

@@ -44,7 +44,7 @@ namespace ETDBs
                         // Получаем путь выбранного файла
                         string filePath = saveFileDialog.FileName;
 
-                        ExcelTablesManager.ExportToExcel(eventsTable, "Events", filePath);
+                        DocumentHandler.CreateExcelFromDataGridView(eventsTable, filePath);
                     }
                 }
             };

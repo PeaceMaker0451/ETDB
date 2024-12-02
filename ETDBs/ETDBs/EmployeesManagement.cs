@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,7 +52,7 @@ namespace ETDBs
                         // Получаем путь выбранного файла
                         string filePath = saveFileDialog.FileName;
 
-                        ExcelTablesManager.ExportToExcel(employeesTable, "Events", filePath);
+                        DocumentHandler.CreateExcelFromDataGridView(employeesTable, filePath);
                     }
                 }
             };
@@ -73,7 +72,7 @@ namespace ETDBs
                         // Получаем путь выбранного файла
                         string filePath = saveFileDialog.FileName;
 
-                        ExcelTablesManager.ExportToExcel(employeesTable, "Events", filePath);
+                        DocumentHandler.CreateExcelFromDataGridView(employeesTable, filePath);
                     }
                 }
             };

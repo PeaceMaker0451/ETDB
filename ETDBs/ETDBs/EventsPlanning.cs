@@ -82,7 +82,10 @@ namespace ETDBs
                 }
             };
 
-            //toolStripButton1.Click += (s,e) => new TemplateDocumentExport(DocsDirectory.Tables).Show();
+            toolStripButton1.Click += (s, e) => 
+            {
+                new TemplateDocumentExport(TagExtractor.ExtractTagsFromDataGridView(eventsTable, "SelectCheckBox")).ShowDialog();
+            }; 
 
             searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text; RefreshTableAsync(); };
             RefreshTable();
@@ -114,7 +117,7 @@ namespace ETDBs
                     string filePath = saveFileDialog.FileName;
 
                     // Создаем файл или выполняем с ним какие-то действия
-                    ExcelTablesManager.ExportToExcel(employeesTable, "Employees", filePath);
+                    DocumentHandler.CreateExcelFromDataGridView(employeesTable, filePath);
                 }
             }
         }
@@ -135,7 +138,7 @@ namespace ETDBs
                     string filePath = saveFileDialog.FileName;
 
                     // Создаем файл или выполняем с ним какие-то действия
-                    ExcelTablesManager.ExportToExcel(eventsTable, "Events", filePath);
+                    DocumentHandler.CreateExcelFromDataGridView(eventsTable, filePath);
                 }
             }
         }

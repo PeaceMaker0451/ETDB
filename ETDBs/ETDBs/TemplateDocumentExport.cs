@@ -1,5 +1,4 @@
-﻿using ClosedXML.Excel;
-using Spire.Doc;
+﻿using NPOI.POIFS.Crypt.Dsig;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +12,27 @@ using System.Windows.Forms;
 
 namespace ETDBs
 {
+    public enum ExportType
+    {
+        FullDocument,
+        Table
+    }
+    
     
     public partial class TemplateDocumentExport : Form
     {
 
         private int selectedIndex = -1;
-        public string selectedPath = "";
+        private string selectedPath = "";
+
+        private ExportType exportType;
 
         private Dictionary<string, string> tags;
+        private Dictionary<string, List<string>> multiTags;
 
         public TemplateDocumentExport(Dictionary<string,string> _tags)
         {
+            exportType = ExportType.FullDocument;
             tags = _tags;
             InitializeComponent();
             LoadDocuments();
@@ -35,7 +44,25 @@ namespace ETDBs
             AcceptButton = acceptButton;
 
             cancelButton.Click += (s, e) => { DialogResult = DialogResult.Cancel; Close(); };
-            acceptButton.Click += (s, e) => { ExportDocument(); DialogResult = DialogResult.OK; Close(); };
+            acceptButton.Click += (s, e) => { ExportDocument();};
+            viewButton.Click += (s, e) => OpenFile(selectedPath);
+        }
+
+        public TemplateDocumentExport(Dictionary<string, List<string>> _tags)
+        {
+            exportType = ExportType.Table;
+            multiTags = _tags;
+            InitializeComponent();
+            LoadDocuments();
+            ShowMultiTags();
+
+            documentsListBox.SelectedIndexChanged += documentsListBox_SelectedIndexChanged;
+
+            CancelButton = cancelButton;
+            AcceptButton = acceptButton;
+
+            cancelButton.Click += (s, e) => { DialogResult = DialogResult.Cancel; Close(); };
+            acceptButton.Click += (s, e) => { ExportDocument();};
             viewButton.Click += (s, e) => OpenFile(selectedPath);
         }
 
@@ -43,7 +70,10 @@ namespace ETDBs
         {
             string folderPath = "";
 
-            folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB", "Documents");
+            if(exportType == ExportType.FullDocument)
+                folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB", "Documents");
+            else if (exportType == ExportType.Table)
+                folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB", "Tables");
 
             // Проверяем, существует ли такая директория
             if (Directory.Exists(folderPath))
@@ -52,9 +82,22 @@ namespace ETDBs
                 documentsListBox.Items.Clear();
 
                 // Получаем все файлы с расширениями .docx, .xls, .xlsx
-                var files = Directory.GetFiles(folderPath)
+
+                List<string> files;
+
+                if (exportType == ExportType.FullDocument)
+                {
+                    files = Directory.GetFiles(folderPath)
                     .Where(file => file.EndsWith(".docx", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".xls", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
                     .ToList();
+                }
+                else
+                {
+                    files = Directory.GetFiles(folderPath)
+                    .Where(file => file.EndsWith(".xls", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+                }
+                
 
                 // Добавляем файлы в ListBox, отображая их имена
                 foreach (var file in files)
@@ -83,6 +126,20 @@ namespace ETDBs
             tagsTextBox.Text = sb.ToString();
         }
 
+        private void ShowMultiTags()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Данная таблица позволит вам использовать экспортировать следующие теги:");
+
+            foreach (var tag in multiTags)
+            {
+                sb.AppendLine($"%{tag.Key}% - {tag.Value.Count}");
+            }
+
+            tagsTextBox.Text = sb.ToString();
+        }
+
         private void documentsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (documentsListBox.SelectedIndex == selectedIndex) return;
@@ -92,7 +149,13 @@ namespace ETDBs
             {
                 string selectedFileName = documentsListBox.SelectedItem.ToString();
 
-                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB", "Documents");
+                string folderPath = "";
+                
+                if (exportType == ExportType.FullDocument)
+                    folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB", "Documents");
+                else if (exportType == ExportType.Table)
+                    folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB", "Tables");
+
                 string selectedFilePath = Path.Combine(folderPath, selectedFileName);
 
                 selectedPath = selectedFilePath;
@@ -113,17 +176,33 @@ namespace ETDBs
 
         private void ExportDocument()
         {
-            var doc = DocumentsManager.OpenDocument(selectedPath);
-
-            foreach (var tag in tags)
+            if (exportType == ExportType.FullDocument)
             {
-                doc = DocumentsManager.ReplaceTagWithValue(doc, tag.Key, tag.Value);
+                var dh = new DocumentHandler();
+
+                dh.LoadDocument(selectedPath);
+
+                foreach (var tag in tags)
+                {
+                    dh.ReplaceTag(tag.Key, tag.Value);
+                }
+
+                string tempPath = "";
+
+                if (dh.GetDocumentType() == DocumentHandler.DocumentType.Word)
+                    tempPath = Path.Combine(Path.GetTempPath(), "temp.docx");
+                else if (dh.GetDocumentType() == DocumentHandler.DocumentType.Excel)
+                    tempPath = Path.Combine(Path.GetTempPath(), "temp.xls");
+
+                dh.SaveDocument(tempPath);
+                DisplayDocument(tempPath);
             }
-
-            string tempPdfPath = Path.Combine(Path.GetTempPath(), "temp.docx");
-
-            doc.SaveToFile(tempPdfPath);
-            DisplayDocument(tempPdfPath);
+            else
+            {
+                var generator = new DocumentGenerator(selectedPath, Path.Combine(Path.GetTempPath(), "temp.xls"));
+                generator.GenerateDocumentFromTemplate(multiTags);
+                DisplayDocument(Path.Combine(Path.GetTempPath(), "temp.xls"));
+            }
         }
 
         private void DisplayDocument(string documentPath)
@@ -137,7 +216,6 @@ namespace ETDBs
                     return;
                 }
 
-                // Открытие документа в стандартной программе с помощью Process.Start
                 System.Diagnostics.Process.Start(documentPath);
             }
             catch (Exception ex)

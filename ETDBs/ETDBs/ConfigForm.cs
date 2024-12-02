@@ -32,8 +32,21 @@ namespace ETDBs
             modeComboBox.SelectedIndex = config.ProgramMode;
             modeComboBox.SelectedIndexChanged += (s, e) => config.ProgramMode = modeComboBox.SelectedIndex;
 
-            connectionTextBox.Text = config.DBConnectionPath;
-            connectionTextBox.TextChanged += (s, e) => config.DBConnectionPath = connectionTextBox.Text;
+            changeConnectionStringButton.Click += (s, e) => 
+            { 
+                var change = MessageBox.Show("Замена строки подключения перезапишет предыдущую строку. Вы уверены, что хотите сделать это?", "Замена строки подключения", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if(change == DialogResult.Yes)
+                {
+                    var dialog = new InputDialog("Введите новую строку подключения");
+                    var result = dialog.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                        config.DBConnectionPath = dialog.InputValue;
+                }
+            };
+            //connectionTextBox.Text = config.DBConnectionPath;
+            //connectionTextBox.TextChanged += (s, e) => config.DBConnectionPath = connectionTextBox.Text;
 
             notifyComboBox.SelectedIndex = config.notificationLevel;
             notifyComboBox.SelectedIndexChanged += (s, e) => config.notificationLevel = notifyComboBox.SelectedIndex;

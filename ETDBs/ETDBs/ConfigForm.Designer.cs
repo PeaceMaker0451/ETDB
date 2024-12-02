@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.modeComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.connectionTextBox = new System.Windows.Forms.TextBox();
             this.notifyComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.alwaysConfigComboBox = new System.Windows.Forms.CheckBox();
@@ -54,6 +53,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.minutsToNotifyNum = new System.Windows.Forms.NumericUpDown();
+            this.changeConnectionStringButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowDays)).BeginInit();
@@ -87,18 +87,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 65);
+            this.label2.Location = new System.Drawing.Point(6, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Строка подключения";
-            // 
-            // connectionTextBox
-            // 
-            this.connectionTextBox.Location = new System.Drawing.Point(9, 81);
-            this.connectionTextBox.Name = "connectionTextBox";
-            this.connectionTextBox.Size = new System.Drawing.Size(381, 20);
-            this.connectionTextBox.TabIndex = 3;
             // 
             // notifyComboBox
             // 
@@ -107,7 +100,7 @@
             "Стандартный",
             "Осторожный",
             "Отладочный"});
-            this.notifyComboBox.Location = new System.Drawing.Point(9, 120);
+            this.notifyComboBox.Location = new System.Drawing.Point(9, 81);
             this.notifyComboBox.Name = "notifyComboBox";
             this.notifyComboBox.Size = new System.Drawing.Size(192, 21);
             this.notifyComboBox.TabIndex = 5;
@@ -115,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 104);
+            this.label3.Location = new System.Drawing.Point(6, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 13);
             this.label3.TabIndex = 4;
@@ -124,7 +117,7 @@
             // alwaysConfigComboBox
             // 
             this.alwaysConfigComboBox.AutoSize = true;
-            this.alwaysConfigComboBox.Location = new System.Drawing.Point(9, 147);
+            this.alwaysConfigComboBox.Location = new System.Drawing.Point(9, 108);
             this.alwaysConfigComboBox.Name = "alwaysConfigComboBox";
             this.alwaysConfigComboBox.Size = new System.Drawing.Size(288, 17);
             this.alwaysConfigComboBox.TabIndex = 6;
@@ -143,6 +136,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.changeConnectionStringButton);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.fontSize);
             this.groupBox1.Controls.Add(this.startWithSystemCheckBox);
@@ -151,7 +145,6 @@
             this.groupBox1.Controls.Add(this.alwaysConfigComboBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.notifyComboBox);
-            this.groupBox1.Controls.Add(this.connectionTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -164,15 +157,15 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 195);
+            this.label10.Location = new System.Drawing.Point(11, 156);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 13);
+            this.label10.Size = new System.Drawing.Size(91, 13);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Размер шрифта";
+            this.label10.Text = "Размер шрифта:";
             // 
             // fontSize
             // 
-            this.fontSize.Location = new System.Drawing.Point(105, 193);
+            this.fontSize.Location = new System.Drawing.Point(105, 154);
             this.fontSize.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -195,7 +188,7 @@
             // startWithSystemCheckBox
             // 
             this.startWithSystemCheckBox.AutoSize = true;
-            this.startWithSystemCheckBox.Location = new System.Drawing.Point(9, 170);
+            this.startWithSystemCheckBox.Location = new System.Drawing.Point(9, 131);
             this.startWithSystemCheckBox.Name = "startWithSystemCheckBox";
             this.startWithSystemCheckBox.Size = new System.Drawing.Size(272, 17);
             this.startWithSystemCheckBox.TabIndex = 7;
@@ -207,9 +200,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(11, 128);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(312, 13);
+            this.label9.Size = new System.Drawing.Size(315, 13);
             this.label9.TabIndex = 14;
-            this.label9.Text = "Кол-во оставшихся дней для отображения события желтым";
+            this.label9.Text = "Кол-во оставшихся дней для отображения события желтым:";
             // 
             // yellowDays
             // 
@@ -311,9 +304,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(11, 154);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(317, 13);
+            this.label8.Size = new System.Drawing.Size(320, 13);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Кол-во оставшихся дней для отображения события красным";
+            this.label8.Text = "Кол-во оставшихся дней для отображения события красным:\r\n";
             // 
             // startHidedCheckBox
             // 
@@ -387,6 +380,15 @@
             0,
             0});
             // 
+            // changeConnectionStringButton
+            // 
+            this.changeConnectionStringButton.Location = new System.Drawing.Point(9, 193);
+            this.changeConnectionStringButton.Name = "changeConnectionStringButton";
+            this.changeConnectionStringButton.Size = new System.Drawing.Size(192, 23);
+            this.changeConnectionStringButton.TabIndex = 19;
+            this.changeConnectionStringButton.Text = "Изменить строку подключения";
+            this.changeConnectionStringButton.UseVisualStyleBackColor = true;
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,7 +423,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox modeComboBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox connectionTextBox;
         private System.Windows.Forms.ComboBox notifyComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox alwaysConfigComboBox;
@@ -443,5 +444,6 @@
         private System.Windows.Forms.NumericUpDown RedDays;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown fontSize;
+        private System.Windows.Forms.Button changeConnectionStringButton;
     }
 }
