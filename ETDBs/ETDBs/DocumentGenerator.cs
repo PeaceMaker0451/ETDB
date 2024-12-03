@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,15 @@ public class DocumentGenerator
             // Чтение шаблона Excel
             using (var fileStream = new FileStream(_templatePath, FileMode.Open, FileAccess.Read))
             {
-                IWorkbook workbook = new XSSFWorkbook(fileStream);
+                IWorkbook workbook;
+
+                if (Path.GetExtension(_templatePath)?.ToLower() == ".xlsx")
+                    workbook = new XSSFWorkbook(fileStream);
+                else if (Path.GetExtension(_templatePath)?.ToLower() == ".xls")
+                    workbook = new HSSFWorkbook(fileStream);
+                else
+                    throw new InvalidOperationException("Неизвестный формат файла");
+
                 ISheet sheet = workbook.GetSheetAt(0);
 
                 // Чтение тегов из первой строки (поле)
@@ -161,21 +170,25 @@ public class DocumentGenerator
         {
             // Ошибка, если файл шаблона не найден
             MessageBox.Show($"Ошибка: файл шаблона не найден. {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Debug.WriteLine(ex.ToString());
         }
         catch (UnauthorizedAccessException ex)
         {
             // Ошибка, если нет доступа к файлу
             MessageBox.Show($"Ошибка: нет доступа к файлу. {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Debug.WriteLine(ex.ToString());
         }
         catch (IOException ex)
         {
             // Ошибка, если произошла проблема с файлом
             MessageBox.Show($"Ошибка ввода-вывода: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Debug.WriteLine(ex.ToString());
         }
         catch (Exception ex)
         {
             // Обрабатываем другие типы ошибок
             MessageBox.Show($"Произошла непредвиденная ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Debug.WriteLine(ex.ToString());
         }
     }
 }

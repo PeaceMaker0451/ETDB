@@ -47,6 +47,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.таблицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.планировщикСобытийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьЛичноеСобытиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@
             this.viewEmployeeMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aboutTool = new System.Windows.Forms.ToolStripMenuItem();
             this.viewAllTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.employeeEventsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -88,7 +90,7 @@
             "Сотрудник 2"});
             this.employeesList.Location = new System.Drawing.Point(3, 16);
             this.employeesList.Name = "employeesList";
-            this.employeesList.Size = new System.Drawing.Size(123, 357);
+            this.employeesList.Size = new System.Drawing.Size(164, 529);
             this.employeesList.TabIndex = 0;
             // 
             // employeeEventsTable
@@ -98,7 +100,7 @@
             this.employeeEventsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeEventsTable.Location = new System.Drawing.Point(3, 16);
             this.employeeEventsTable.Name = "employeeEventsTable";
-            this.employeeEventsTable.Size = new System.Drawing.Size(634, 153);
+            this.employeeEventsTable.Size = new System.Drawing.Size(842, 246);
             this.employeeEventsTable.TabIndex = 1;
             // 
             // splitContainer1
@@ -116,8 +118,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(779, 376);
-            this.splitContainer1.SplitterDistance = 129;
+            this.splitContainer1.Size = new System.Drawing.Size(1028, 548);
+            this.splitContainer1.SplitterDistance = 170;
             this.splitContainer1.TabIndex = 2;
             // 
             // groupBox1
@@ -126,7 +128,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 376);
+            this.groupBox1.Size = new System.Drawing.Size(170, 548);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сотрудники";
@@ -138,7 +140,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(646, 376);
+            this.groupBox2.Size = new System.Drawing.Size(854, 548);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "События";
@@ -157,8 +159,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
-            this.splitContainer2.Size = new System.Drawing.Size(640, 328);
-            this.splitContainer2.SplitterDistance = 152;
+            this.splitContainer2.Size = new System.Drawing.Size(848, 500);
+            this.splitContainer2.SplitterDistance = 231;
             this.splitContainer2.TabIndex = 1;
             // 
             // groupBox3
@@ -167,7 +169,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(640, 152);
+            this.groupBox3.Size = new System.Drawing.Size(848, 231);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "События по должности";
@@ -179,7 +181,7 @@
             this.titleEventsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleEventsTable.Location = new System.Drawing.Point(3, 16);
             this.titleEventsTable.Name = "titleEventsTable";
-            this.titleEventsTable.Size = new System.Drawing.Size(634, 133);
+            this.titleEventsTable.Size = new System.Drawing.Size(842, 212);
             this.titleEventsTable.TabIndex = 2;
             // 
             // groupBox4
@@ -188,7 +190,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(640, 172);
+            this.groupBox4.Size = new System.Drawing.Size(848, 265);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "События сотрудника";
@@ -203,7 +205,7 @@
             this.editTitleEventsButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(640, 29);
+            this.toolStrip1.Size = new System.Drawing.Size(848, 29);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -248,14 +250,15 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(779, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1028, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // таблицыToolStripMenuItem
             // 
             this.таблицыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.обновитьToolStripMenuItem});
+            this.обновитьToolStripMenuItem,
+            this.планировщикСобытийToolStripMenuItem});
             this.таблицыToolStripMenuItem.Name = "таблицыToolStripMenuItem";
             this.таблицыToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.таблицыToolStripMenuItem.Text = "Таблицы";
@@ -263,9 +266,15 @@
             // обновитьToolStripMenuItem
             // 
             this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
-            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.обновитьToolStripMenuItem.Text = "Обновить";
             this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
+            // 
+            // планировщикСобытийToolStripMenuItem
+            // 
+            this.планировщикСобытийToolStripMenuItem.Name = "планировщикСобытийToolStripMenuItem";
+            this.планировщикСобытийToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.планировщикСобытийToolStripMenuItem.Text = "Отслеживание событий";
             // 
             // правкаToolStripMenuItem
             // 
@@ -301,7 +310,8 @@
             // 
             this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem1,
-            this.лицензияToolStripMenuItem});
+            this.лицензияToolStripMenuItem,
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem});
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
@@ -309,13 +319,13 @@
             // оПрограммеToolStripMenuItem1
             // 
             this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
-            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(269, 22);
             this.оПрограммеToolStripMenuItem1.Text = "Справка";
             // 
             // лицензияToolStripMenuItem
             // 
             this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
-            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.лицензияToolStripMenuItem.Text = "Лицензия";
             // 
             // textBox1
@@ -323,11 +333,11 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(3, 406);
+            this.textBox1.Location = new System.Drawing.Point(3, 578);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Базы данных событий v. 1.0.1";
+            this.textBox1.Text = "Базы данных событий v. 1.1.2";
             // 
             // viewEmployeeMenuStrip
             // 
@@ -349,12 +359,18 @@
             this.viewAllTool.Size = new System.Drawing.Size(231, 22);
             this.viewAllTool.Text = "Просмотр всех сотрудников";
             // 
+            // открытьПапкуДанныхПрограммыToolStripMenuItem
+            // 
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Name = "открытьПапкуДанныхПрограммыToolStripMenuItem";
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Text = "Открыть папку данных программы";
+            // 
             // EventsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(779, 427);
+            this.ClientSize = new System.Drawing.Size(1028, 599);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
@@ -417,5 +433,7 @@
         private System.Windows.Forms.ToolStripMenuItem добавитьЛичноеСобытиеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактироватьДолжностныеСобытияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem планировщикСобытийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem открытьПапкуДанныхПрограммыToolStripMenuItem;
     }
 }

@@ -49,7 +49,7 @@
             this.documentsListBox.FormattingEnabled = true;
             this.documentsListBox.Location = new System.Drawing.Point(0, 0);
             this.documentsListBox.Name = "documentsListBox";
-            this.documentsListBox.Size = new System.Drawing.Size(155, 418);
+            this.documentsListBox.Size = new System.Drawing.Size(616, 418);
             this.documentsListBox.TabIndex = 0;
             // 
             // cancelButton
@@ -68,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.acceptButton.Location = new System.Drawing.Point(244, 424);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(119, 23);
+            this.acceptButton.Size = new System.Drawing.Size(608, 23);
             this.acceptButton.TabIndex = 2;
             this.acceptButton.Text = "Выбрать";
             this.acceptButton.UseVisualStyleBackColor = true;
@@ -98,8 +98,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.documentsListBox);
-            this.splitContainer1.Size = new System.Drawing.Size(378, 418);
-            this.splitContainer1.SplitterDistance = 219;
+            this.splitContainer1.Size = new System.Drawing.Size(867, 418);
+            this.splitContainer1.SplitterDistance = 247;
             this.splitContainer1.TabIndex = 4;
             // 
             // groupBox1
@@ -108,7 +108,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(219, 418);
+            this.groupBox1.Size = new System.Drawing.Size(247, 418);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Теги";
@@ -118,23 +118,24 @@
             this.tagsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tagsTextBox.Location = new System.Drawing.Point(3, 16);
             this.tagsTextBox.Name = "tagsTextBox";
-            this.tagsTextBox.Size = new System.Drawing.Size(213, 399);
+            this.tagsTextBox.Size = new System.Drawing.Size(241, 399);
             this.tagsTextBox.TabIndex = 0;
             this.tagsTextBox.Text = "";
             // 
-            // DocsList
+            // TemplateDocumentExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(377, 454);
+            this.ClientSize = new System.Drawing.Size(866, 454);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.viewButton);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.cancelButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(393, 268);
-            this.Name = "DocsList";
-            this.Text = "DocsList";
+            this.Name = "TemplateDocumentExport";
+            this.Text = "Экспорт по шаблону";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

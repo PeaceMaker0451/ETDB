@@ -47,10 +47,12 @@
             this.titleFilter = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exportEmployeesTableButton = new System.Windows.Forms.ToolStripButton();
+            this.exportEmployeesByTemplateButton = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.eventsTable = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.exportEventsTableButton = new System.Windows.Forms.ToolStripButton();
+            this.exportEventsByTemplateButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.таблицаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +65,7 @@
             this.licenseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -102,7 +104,7 @@
             this.employeesTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.employeesTable.Location = new System.Drawing.Point(3, 48);
             this.employeesTable.Name = "employeesTable";
-            this.employeesTable.Size = new System.Drawing.Size(840, 120);
+            this.employeesTable.Size = new System.Drawing.Size(1051, 179);
             this.employeesTable.TabIndex = 0;
             // 
             // splitContainer1
@@ -121,8 +123,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(843, 399);
-            this.splitContainer1.SplitterDistance = 168;
+            this.splitContainer1.Size = new System.Drawing.Size(1054, 540);
+            this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 1;
             // 
             // groupBox1
@@ -132,7 +134,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(843, 168);
+            this.groupBox1.Size = new System.Drawing.Size(1054, 227);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сотрудники";
@@ -149,10 +151,11 @@
             this.statusFilter,
             this.titleFilter,
             this.toolStripSeparator3,
-            this.exportEmployeesTableButton});
+            this.exportEmployeesTableButton,
+            this.exportEmployeesByTemplateButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(837, 29);
+            this.toolStrip1.Size = new System.Drawing.Size(1048, 29);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -211,6 +214,15 @@
             this.exportEmployeesTableButton.Size = new System.Drawing.Size(26, 26);
             this.exportEmployeesTableButton.Text = "Экспорт в Excel";
             // 
+            // exportEmployeesByTemplateButton
+            // 
+            this.exportEmployeesByTemplateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportEmployeesByTemplateButton.Image = global::ETDBs.Properties.Resources.file_export_24dp_9B5278_FILL0_wght400_GRAD0_opsz24;
+            this.exportEmployeesByTemplateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportEmployeesByTemplateButton.Name = "exportEmployeesByTemplateButton";
+            this.exportEmployeesByTemplateButton.Size = new System.Drawing.Size(26, 26);
+            this.exportEmployeesByTemplateButton.Text = "Экспорт выделенных строк по шаблону таблицы";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.eventsTable);
@@ -218,7 +230,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(843, 227);
+            this.groupBox2.Size = new System.Drawing.Size(1054, 309);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "События";
@@ -248,7 +260,7 @@
             this.eventsTable.DefaultCellStyle = dataGridViewCellStyle4;
             this.eventsTable.Location = new System.Drawing.Point(3, 48);
             this.eventsTable.Name = "eventsTable";
-            this.eventsTable.Size = new System.Drawing.Size(837, 179);
+            this.eventsTable.Size = new System.Drawing.Size(1048, 261);
             this.eventsTable.TabIndex = 1;
             // 
             // toolStrip2
@@ -256,10 +268,10 @@
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(22, 22);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportEventsTableButton,
-            this.toolStripButton1});
+            this.exportEventsByTemplateButton});
             this.toolStrip2.Location = new System.Drawing.Point(3, 16);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(837, 29);
+            this.toolStrip2.Size = new System.Drawing.Size(1048, 29);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -272,6 +284,15 @@
             this.exportEventsTableButton.Size = new System.Drawing.Size(26, 26);
             this.exportEventsTableButton.Text = "Экспорт в Excel";
             // 
+            // exportEventsByTemplateButton
+            // 
+            this.exportEventsByTemplateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportEventsByTemplateButton.Image = global::ETDBs.Properties.Resources.file_export_24dp_9B5278_FILL0_wght400_GRAD0_opsz24;
+            this.exportEventsByTemplateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportEventsByTemplateButton.Name = "exportEventsByTemplateButton";
+            this.exportEventsByTemplateButton.Size = new System.Drawing.Size(26, 26);
+            this.exportEventsByTemplateButton.Text = "Экспорт выделенных строк по шаблону таблицы";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -280,7 +301,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(847, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1058, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -330,7 +351,8 @@
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutMenuItem,
-            this.licenseMenuItem});
+            this.licenseMenuItem,
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справкаToolStripMenuItem.Text = "О программе";
@@ -338,13 +360,13 @@
             // aboutMenuItem
             // 
             this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.aboutMenuItem.Size = new System.Drawing.Size(269, 22);
             this.aboutMenuItem.Text = "Справка";
             // 
             // licenseMenuItem
             // 
             this.licenseMenuItem.Name = "licenseMenuItem";
-            this.licenseMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.licenseMenuItem.Size = new System.Drawing.Size(269, 22);
             this.licenseMenuItem.Text = "Лицензия";
             // 
             // notifyIcon1
@@ -358,27 +380,24 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(8, 432);
+            this.textBox1.Location = new System.Drawing.Point(8, 573);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Базы данных событий v. 1.0.1";
+            this.textBox1.Text = "Базы данных событий v. 1.1.2";
             // 
-            // toolStripButton1
+            // открытьПапкуДанныхПрограммыToolStripMenuItem
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(26, 26);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Name = "открытьПапкуДанныхПрограммыToolStripMenuItem";
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Text = "Открыть папку данных программы";
             // 
             // EventsPlanning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(847, 451);
+            this.ClientSize = new System.Drawing.Size(1058, 592);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
@@ -439,6 +458,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licenseMenuItem;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton exportEventsByTemplateButton;
+        private System.Windows.Forms.ToolStripButton exportEmployeesByTemplateButton;
+        private System.Windows.Forms.ToolStripMenuItem открытьПапкуДанныхПрограммыToolStripMenuItem;
     }
 }

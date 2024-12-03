@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -46,6 +47,8 @@ namespace ETDBs
             cancelButton.Click += (s, e) => { DialogResult = DialogResult.Cancel; Close(); };
             acceptButton.Click += (s, e) => { ExportDocument();};
             viewButton.Click += (s, e) => OpenFile(selectedPath);
+
+            Program.SetFormSize(this);
         }
 
         public TemplateDocumentExport(Dictionary<string, List<string>> _tags)
@@ -64,6 +67,8 @@ namespace ETDBs
             cancelButton.Click += (s, e) => { DialogResult = DialogResult.Cancel; Close(); };
             acceptButton.Click += (s, e) => { ExportDocument();};
             viewButton.Click += (s, e) => OpenFile(selectedPath);
+
+            Program.SetFormSize(this);
         }
 
         private void LoadDocuments()
@@ -120,7 +125,7 @@ namespace ETDBs
 
             foreach (var tag in tags)
             {
-                sb.AppendLine($"%{tag.Key}% - {tag.Value}");
+                sb.AppendLine($"%{tag.Key}% - '{tag.Value}'");
             }
 
             tagsTextBox.Text = sb.ToString();
@@ -134,7 +139,7 @@ namespace ETDBs
 
             foreach (var tag in multiTags)
             {
-                sb.AppendLine($"%{tag.Key}% - {tag.Value.Count}");
+                sb.AppendLine($"%{tag.Key}% - {tag.Value.Count} значений: '{tag.Value[0]}'...");
             }
 
             tagsTextBox.Text = sb.ToString();
@@ -185,23 +190,81 @@ namespace ETDBs
                 foreach (var tag in tags)
                 {
                     dh.ReplaceTag(tag.Key, tag.Value);
+                    Debug.WriteLine($"{tag.Key}-{tag.Value}");
                 }
 
-                string tempPath = "";
+                string path = "";
 
                 if (dh.GetDocumentType() == DocumentHandler.DocumentType.Word)
-                    tempPath = Path.Combine(Path.GetTempPath(), "temp.docx");
-                else if (dh.GetDocumentType() == DocumentHandler.DocumentType.Excel)
-                    tempPath = Path.Combine(Path.GetTempPath(), "temp.xls");
+                {
+                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                    {
+                        saveFileDialog.Filter = "Word Документ (*.docx)|*.docx";
+                        saveFileDialog.Title = "Сохранить как";
+                        saveFileDialog.DefaultExt = "docx";
+                        saveFileDialog.AddExtension = true;
+                        saveFileDialog.FileName = "NewDocument";
 
-                dh.SaveDocument(tempPath);
-                DisplayDocument(tempPath);
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            path = saveFileDialog.FileName;
+                        }
+                        else
+                            return;
+                    }
+                }
+                else if (dh.GetDocumentType() == DocumentHandler.DocumentType.Excel)
+                {
+                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                    {
+                        saveFileDialog.Filter = "Excel Таблица (*.xls)|*.xls";
+                        saveFileDialog.Title = "Сохранить как";
+                        saveFileDialog.DefaultExt = "xls";
+                        saveFileDialog.AddExtension = true;
+                        saveFileDialog.FileName = "NewTable";
+
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            path = saveFileDialog.FileName;
+                        }
+                        else
+                            return;
+
+
+                    }
+
+                    
+                }
+
+                dh.SaveDocument(path);
+
+                if (MessageBox.Show("Открыть сохраненный файл?", "Сохранение файла", MessageBoxButtons.YesNo) == DialogResult.Yes) 
+                    DisplayDocument(path);
             }
             else
             {
-                var generator = new DocumentGenerator(selectedPath, Path.Combine(Path.GetTempPath(), "temp.xls"));
-                generator.GenerateDocumentFromTemplate(multiTags);
-                DisplayDocument(Path.Combine(Path.GetTempPath(), "temp.xls"));
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Таблица (*.xls)|*.xls";
+                    saveFileDialog.Title = "Сохранить как";
+                    saveFileDialog.DefaultExt = "xls";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = "NewTable";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Получаем путь выбранного файла
+                        string filePath = saveFileDialog.FileName;
+
+                        var generator = new DocumentGenerator(selectedPath, filePath);
+                        generator.GenerateDocumentFromTemplate(multiTags);
+
+                        if(MessageBox.Show("Открыть сохраненный файл?","Сохранение файла", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            DisplayDocument(Path.Combine(Path.GetTempPath(), filePath));
+                    }
+                }
+
+                
             }
         }
 

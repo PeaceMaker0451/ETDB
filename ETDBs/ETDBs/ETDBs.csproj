@@ -342,6 +342,7 @@
     <None Include="Resources\ETDB.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\file_export_24dp_9B5278_FILL0_wght400_GRAD0_opsz24.png" />
     <Content Include="wkhtmltopdf.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

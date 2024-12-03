@@ -9,6 +9,8 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Windows.Forms.Design;
 
 namespace ETDBs
 {
@@ -36,6 +38,15 @@ namespace ETDBs
 
             configMenuItem.Click += (s, e) => { this.DialogResult = DialogResult.Retry; this.Close(); };
             справкаToolStripMenuItem.Click += (s, e) => { new About().ShowDialog(); };
+            планировщикСобытийToolStripMenuItem.Click += (s, e) => new EventsPlanning(dbManager, config, true).ShowDialog();
+
+            открытьПапкуДанныхПрограммыToolStripMenuItem.Click += (s, e) =>
+            {
+                if (System.IO.Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB")))
+                {
+                    Process.Start("explorer.exe", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB"));
+                }
+            };
 
             exportButton.Click += (s, e) =>
             {
@@ -100,6 +111,16 @@ namespace ETDBs
                 {
                     MessageBox.Show($"Ошибка чтения файла: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            };
+
+            exportByTemplateButton.Click += (s, e) =>
+            {
+                if (employeesTable.IsCurrentCellInEditMode)
+                {
+                    employeesTable.EndEdit();
+                }
+
+                new TemplateDocumentExport(TagExtractor.ExtractTagsFromDataGridView(employeesTable, "SelectCheckBox")).ShowDialog();
             };
 
             добавитьДолжностьToolStripMenuItem.Click += EditJobTitlesButton_Click;
@@ -410,7 +431,30 @@ namespace ETDBs
             }
             else if (e.ColumnIndex == employeesTable.Columns["ExportButton"].Index && e.RowIndex >= 0)
             {
+                var clickedRow = employeesTable.Rows[e.RowIndex];
 
+                Dictionary<string, string> rowData = new Dictionary<string, string>();
+
+                foreach (DataGridViewColumn column in employeesTable.Columns)
+                {
+                    if (column is DataGridViewButtonColumn || column is DataGridViewCheckBoxColumn)
+                        continue;
+
+                    string columnName = column.HeaderText;
+
+                    var cellValue = clickedRow.Cells[column.Index].Value;
+
+                    string formattedValue = cellValue is DateTime dateValue
+                        ? dateValue.ToString("dd.MM.yyyy")
+                        : cellValue?.ToString() ?? string.Empty;
+
+                    rowData[columnName] = formattedValue;
+                }
+
+                rowData["Сегодня (Коротко)"] = DateTime.Today.ToString("dd.MM.yyyy");
+                rowData["Сегодня"] = $"{DateTime.Today:dd} {DateTime.Today:MMMM yyyy} г.";
+
+                new TemplateDocumentExport(rowData).ShowDialog();
             }
         }
 

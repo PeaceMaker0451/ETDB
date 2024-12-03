@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using System.Xml.Linq;
 using System.IO;
+using NPOI.SS.Formula.Functions;
+using System.Diagnostics;
 
 namespace ETDBs
 {
@@ -35,9 +37,12 @@ namespace ETDBs
 
         private bool formIsHided = false;
 
+        private bool subWindow;
 
-        public EventsPlanning(DBManager manager, Config _config)
+
+        public EventsPlanning(DBManager manager, Config _config, bool isSubWindow = false)
         {
+            subWindow = isSubWindow;
             dbManager = manager;
             config = _config;
             InitializeComponent();
@@ -55,6 +60,14 @@ namespace ETDBs
             exportEventsTableMenuItem.Click += ExportEventsTableButton_Click;
             exportEmployeesTableButton.Click += ExportEmployeesTableButton_Click;
             exportEmployeesTableMenuItem.Click += ExportEmployeesTableButton_Click;
+
+            открытьПапкуДанныхПрограммыToolStripMenuItem.Click += (s, e) =>
+            {
+                if (System.IO.Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB")))
+                {
+                    Process.Start("explorer.exe", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB"));
+                }
+            };
 
             aboutMenuItem.Click += (s, e) => { new About().ShowDialog(); };
             licenseMenuItem.Click += (s, e) =>
@@ -82,21 +95,47 @@ namespace ETDBs
                 }
             };
 
-            toolStripButton1.Click += (s, e) => 
+            exportEventsByTemplateButton.Click += (s, e) => 
             {
+                if (eventsTable.IsCurrentCellInEditMode)
+                {
+                    eventsTable.EndEdit();
+                }
+
                 new TemplateDocumentExport(TagExtractor.ExtractTagsFromDataGridView(eventsTable, "SelectCheckBox")).ShowDialog();
-            }; 
+            };
+
+            exportEmployeesByTemplateButton.Click += (s, e) =>
+            {
+                if (employeesTable.IsCurrentCellInEditMode)
+                {
+                    employeesTable.EndEdit();
+                }
+
+                new TemplateDocumentExport(TagExtractor.ExtractTagsFromDataGridView(employeesTable, "SelectCheckBox")).ShowDialog();
+            };
 
             searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text; RefreshTableAsync(); };
             RefreshTable();
 
-            if (config.notifyWhenProgramIsNotHided)
-                timer = new System.Threading.Timer(TimerCallback, null, 0, 60000 * config.notificationInterval);
+            if(!isSubWindow)
+            {
+                if (config.notifyWhenProgramIsNotHided)
+                    timer = new System.Threading.Timer(TimerCallback, null, 0, 60000 * config.notificationInterval);
 
-            if (config.startHided)
-                this.Load += (s,e) => this.WindowState = FormWindowState.Minimized;
+                if (config.startHided)
+                    this.Load += (s, e) => this.WindowState = FormWindowState.Minimized;
 
-            this.FormClosed += (s, e) => this.notifyIcon1.Visible = false;
+                this.FormClosed += (s, e) => this.notifyIcon1.Visible = false;
+            }
+            else
+            {
+                configMenuItem.Enabled = false;
+            }
+            
+            
+
+            
 
             Program.SetFormSize(this);
         }
@@ -145,6 +184,9 @@ namespace ETDBs
 
         private async void TimerCallback(object state)
         {
+            if (subWindow)
+                return;
+
             if (this.InvokeRequired)
             {
                 this.BeginInvoke((MethodInvoker)(async () => RefreshTable()));
@@ -185,6 +227,9 @@ namespace ETDBs
 
         private void EventsPlanning_SizeChanged(object sender, EventArgs e)
         {
+            if(subWindow)
+                return;
+            
             if (formIsHided)
                 return;
             
@@ -215,6 +260,8 @@ namespace ETDBs
 
         private void NotifyAboutDeadLines()
         {
+            if(subWindow)
+                return;
             TablesTools.NotifyEvents(eventsTable, config.maxDaysToNotifyAboutEvent, config.simplifyNotifications, notifyIcon1);
         }
 
@@ -331,13 +378,12 @@ namespace ETDBs
             catch { }
             
             employeesTable.DataSource = filteredEmployeesData;
-            employeesTable.ReadOnly = true;
             employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             
             if(config.notificationLevel < 2)
                 employeesTable.Columns["EmployeeID"].Visible = false;
 
-            employeesTable.Columns["FullName"].DisplayIndex = 0;
+            employeesTable.Columns["FullName"].DisplayIndex = 2;
             employeesTable.Columns["FullName"].HeaderText = "ФИО";
             employeesTable.Columns["JobTitle"].HeaderText = "Должность";
             employeesTable.Columns["Status"].HeaderText = "Статус";
@@ -353,7 +399,32 @@ namespace ETDBs
                 Name = "ViewButton"
             };
             employeesTable.Columns.Add(viewButtonColumn);
-            employeesTable.Columns["ViewButton"].DisplayIndex = 1;
+            employeesTable.Columns["ViewButton"].DisplayIndex = 2;
+
+            var exportColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "Экспортировать событие по шаблону",
+                Text = "Экспортировать",
+                UseColumnTextForButtonValue = true,
+                Name = "ExportButton"
+            };
+            employeesTable.Columns.Add(exportColumn);
+            employeesTable.Columns["ExportButton"].DisplayIndex = 1;
+
+            var selectCheckBoxColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "Выделение строк",
+                Name = "SelectCheckBox"
+            };
+            employeesTable.Columns.Add(selectCheckBoxColumn);
+            employeesTable.Columns["SelectCheckBox"].DisplayIndex = 0;
+
+            foreach (DataGridViewColumn column in employeesTable.Columns)
+            {
+                column.ReadOnly = true;
+            }
+
+            employeesTable.Columns["SelectCheckBox"].ReadOnly = false;
 
             employeesTable.CellClick += DataGridViewEmployees_CellClick;
         }
@@ -410,6 +481,33 @@ namespace ETDBs
                 }
 
 
+            }
+            else if (e.ColumnIndex == employeesTable.Columns["ExportButton"].Index && e.RowIndex >= 0)
+            {
+                var clickedRow = employeesTable.Rows[e.RowIndex];
+
+                Dictionary<string, string> rowData = new Dictionary<string, string>();
+
+                foreach (DataGridViewColumn column in employeesTable.Columns)
+                {
+                    if (column is DataGridViewButtonColumn || column is DataGridViewCheckBoxColumn)
+                        continue;
+
+                    string columnName = column.HeaderText;
+
+                    var cellValue = clickedRow.Cells[column.Index].Value;
+
+                    string formattedValue = cellValue is DateTime dateValue
+                        ? dateValue.ToString("dd.MM.yyyy")
+                        : cellValue?.ToString() ?? string.Empty;
+
+                    rowData[columnName] = formattedValue;
+                }
+
+                rowData["Сегодня (Коротко)"] = DateTime.Today.ToString("dd.MM.yyyy");
+                rowData["Сегодня"] = $"{DateTime.Today:dd} {DateTime.Today:MMMM yyyy} г.";
+
+                new TemplateDocumentExport(rowData).ShowDialog();
             }
         }
 
@@ -715,30 +813,26 @@ namespace ETDBs
             {
                 var clickedRow = eventsTable.Rows[e.RowIndex];
 
-                // Инициализируем словарь
                 Dictionary<string, string> rowData = new Dictionary<string, string>();
 
-                // Проходим по всем колонкам строки
                 foreach (DataGridViewColumn column in eventsTable.Columns)
                 {
-                    // Пропускаем колонки с кнопками и чекбоксами
                     if (column is DataGridViewButtonColumn || column is DataGridViewCheckBoxColumn)
                         continue;
 
-                    // Получаем видимое имя колонки
                     string columnName = column.HeaderText;
 
-                    // Получаем значение ячейки
                     var cellValue = clickedRow.Cells[column.Index].Value;
 
-                    // Если значение является DateTime, форматируем его, иначе преобразуем в строку
                     string formattedValue = cellValue is DateTime dateValue
                         ? dateValue.ToString("dd.MM.yyyy")
                         : cellValue?.ToString() ?? string.Empty;
 
-                    // Добавляем в словарь
                     rowData[columnName] = formattedValue;
                 }
+
+                rowData["Сегодня (Коротко)"] = DateTime.Today.ToString("dd.MM.yyyy");
+                rowData["Сегодня"] = $"{DateTime.Today:dd} {DateTime.Today:MMMM yyyy} г.";
 
                 new TemplateDocumentExport(rowData).ShowDialog();
             }

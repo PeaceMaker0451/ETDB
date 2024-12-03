@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesManagement));
             this.employeesTable = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tableTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.экспортироватьВExcelТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортироватьВExcelТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.планировщикСобытийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editTool = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAttribute = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьДолжностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,9 @@
             this.titleFilter = new System.Windows.Forms.ToolStripComboBox();
             this.statusFilter = new System.Windows.Forms.ToolStripComboBox();
             this.exportButton = new System.Windows.Forms.ToolStripButton();
+            this.exportByTemplateButton = new System.Windows.Forms.ToolStripButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,26 +74,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeesTable.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.employeesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.employeesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.employeesTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeesTable.DefaultCellStyle = dataGridViewCellStyle4;
             this.employeesTable.Location = new System.Drawing.Point(0, 51);
             this.employeesTable.Name = "employeesTable";
-            this.employeesTable.Size = new System.Drawing.Size(829, 443);
+            this.employeesTable.Size = new System.Drawing.Size(1066, 558);
             this.employeesTable.TabIndex = 0;
             // 
             // menuStrip1
@@ -102,18 +105,25 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(829, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1066, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tableTool
             // 
             this.tableTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.обновитьToolStripMenuItem,
             this.экспортироватьВExcelТаблицуToolStripMenuItem,
-            this.обновитьToolStripMenuItem});
+            this.планировщикСобытийToolStripMenuItem});
             this.tableTool.Name = "tableTool";
             this.tableTool.Size = new System.Drawing.Size(68, 20);
             this.tableTool.Text = "Таблицы";
+            // 
+            // обновитьToolStripMenuItem
+            // 
+            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.обновитьToolStripMenuItem.Text = "Обновить";
             // 
             // экспортироватьВExcelТаблицуToolStripMenuItem
             // 
@@ -121,11 +131,11 @@
             this.экспортироватьВExcelТаблицуToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.экспортироватьВExcelТаблицуToolStripMenuItem.Text = "Экспортировать в Excel таблицу";
             // 
-            // обновитьToolStripMenuItem
+            // планировщикСобытийToolStripMenuItem
             // 
-            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
-            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.обновитьToolStripMenuItem.Text = "Обновить";
+            this.планировщикСобытийToolStripMenuItem.Name = "планировщикСобытийToolStripMenuItem";
+            this.планировщикСобытийToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.планировщикСобытийToolStripMenuItem.Text = "Отслеживание событий";
             // 
             // editTool
             // 
@@ -167,7 +177,8 @@
             // 
             this.aboutTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справкаToolStripMenuItem,
-            this.лицензияToolStripMenuItem});
+            this.лицензияToolStripMenuItem,
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem});
             this.aboutTool.Name = "aboutTool";
             this.aboutTool.Size = new System.Drawing.Size(94, 20);
             this.aboutTool.Text = "О программе";
@@ -175,13 +186,13 @@
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // лицензияToolStripMenuItem
             // 
             this.лицензияToolStripMenuItem.Name = "лицензияToolStripMenuItem";
-            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.лицензияToolStripMenuItem.Text = "Лицензия";
             // 
             // groupBox1
@@ -193,7 +204,7 @@
             this.groupBox1.Controls.Add(this.employeesTable);
             this.groupBox1.Location = new System.Drawing.Point(0, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(829, 494);
+            this.groupBox1.Size = new System.Drawing.Size(1066, 609);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Таблица сотрудников";
@@ -215,11 +226,12 @@
             this.toolStripSeparator2,
             this.titleFilter,
             this.statusFilter,
-            this.exportButton});
+            this.exportButton,
+            this.exportByTemplateButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(823, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(1060, 32);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -314,23 +326,38 @@
             this.exportButton.Size = new System.Drawing.Size(26, 29);
             this.exportButton.Text = "Экспорт в Excel";
             // 
+            // exportByTemplateButton
+            // 
+            this.exportByTemplateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportByTemplateButton.Image = global::ETDBs.Properties.Resources.file_export_24dp_9B5278_FILL0_wght400_GRAD0_opsz24;
+            this.exportByTemplateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportByTemplateButton.Name = "exportByTemplateButton";
+            this.exportByTemplateButton.Size = new System.Drawing.Size(26, 29);
+            this.exportByTemplateButton.Text = "Экспортировать выделенные строки по шаблону таблицы";
+            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(3, 527);
+            this.textBox1.Location = new System.Drawing.Point(3, 642);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Базы данных событий v. 1.0.1";
+            this.textBox1.Text = "Базы данных событий v. 1.1.2";
+            // 
+            // открытьПапкуДанныхПрограммыToolStripMenuItem
+            // 
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Name = "открытьПапкуДанныхПрограммыToolStripMenuItem";
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Text = "Открыть папку данных программы";
             // 
             // EmployeesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(829, 545);
+            this.ClientSize = new System.Drawing.Size(1066, 660);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -381,6 +408,9 @@
         private System.Windows.Forms.ToolStripComboBox statusFilter;
         private System.Windows.Forms.ToolStripButton exportButton;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem планировщикСобытийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton exportByTemplateButton;
+        private System.Windows.Forms.ToolStripMenuItem открытьПапкуДанныхПрограммыToolStripMenuItem;
     }
 }
 

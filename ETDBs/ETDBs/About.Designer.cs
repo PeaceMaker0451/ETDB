@@ -83,7 +83,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "ETDB - Версия 1.0.1";
+            this.label1.Text = "ETDB - Версия 1.1.2";
             // 
             // About
             // 

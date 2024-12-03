@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Diagnostics;
 
 namespace ETDBs
 {
@@ -40,7 +41,16 @@ namespace ETDBs
             configMenuItem.Click += (s, e) => { this.DialogResult = DialogResult.Retry; this.Close(); };
             refreshButton.Click += (s,e) => RefreshTable();
 
+            открытьПапкуДанныхПрограммыToolStripMenuItem.Click += (s, e) =>
+            {
+                if (System.IO.Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB")))
+                {
+                    Process.Start("explorer.exe", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ETDB"));
+                }
+            };
+
             оПрограммеToolStripMenuItem1.Click += (s, e) => { new About().ShowDialog(); };
+            планировщикСобытийToolStripMenuItem.Click += (s, e) => new EventsPlanning(dbManager, config, true).ShowDialog();
             лицензияToolStripMenuItem.Click += (s, e) => 
             {
                 try
