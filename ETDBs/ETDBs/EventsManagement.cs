@@ -94,6 +94,18 @@ namespace ETDBs
             
 
             Program.SetFormSize(this);
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, employeeEventsTable, new object[] { true });
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, titleEventsTable, new object[] { true });
         }
 
         private void ViewAllTool_Click(object sender, EventArgs e)
@@ -102,7 +114,7 @@ namespace ETDBs
             {
                 tableViewer.Load += (s, _e) =>
                 {
-                    tableViewer.dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    tableViewer.dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     tableViewer.dataGridView.Columns["EmployeeID"].Visible = false;
                     tableViewer.dataGridView.Columns["FullName"].DisplayIndex = 0;
                     tableViewer.dataGridView.Columns["FullName"].HeaderText = "ФИО";
@@ -293,7 +305,7 @@ namespace ETDBs
                 Name = "PeriodicityText",
                 HeaderText = "Периодичность",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 3
             };
             titleEventsTable.Columns.Add(periodColumn);
@@ -303,14 +315,14 @@ namespace ETDBs
                 Name = "NextEventDate",
                 HeaderText = "Дата следующего события",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 5
             };
             titleEventsTable.Columns.Add(nextEventColumn);
 
             titleEventsTable.DataSource = dbManager.GetAllEmployeeJobTitleEventsTable(selectedID);
             titleEventsTable.ReadOnly = true;
-            titleEventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            titleEventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             
             if (config.notificationLevel == 0)
                 titleEventsTable.Columns["EventID"].Visible = false;
@@ -520,7 +532,7 @@ namespace ETDBs
                 Name = "PeriodicityText",
                 HeaderText = "Периодичность",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 3
             };
             employeeEventsTable.Columns.Add(periodColumn);
@@ -530,14 +542,14 @@ namespace ETDBs
                 Name = "NextEventDate",
                 HeaderText = "Дата следующего события",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 5
             };
             employeeEventsTable.Columns.Add(nextEventColumn);
 
             employeeEventsTable.DataSource = dbManager.GetAllEmployeeEventsTable(selectedID);
             employeeEventsTable.ReadOnly = true;
-            employeeEventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            employeeEventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             if (config.notificationLevel == 0)
                 employeeEventsTable.Columns["EventID"].Visible = false;
             employeeEventsTable.Columns["IsMonths"].Visible = false;

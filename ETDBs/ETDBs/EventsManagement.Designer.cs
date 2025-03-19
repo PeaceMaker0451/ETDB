@@ -55,11 +55,11 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.лицензияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.viewEmployeeMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aboutTool = new System.Windows.Forms.ToolStripMenuItem();
             this.viewAllTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьПапкуДанныхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.employeeEventsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -328,6 +328,12 @@
             this.лицензияToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.лицензияToolStripMenuItem.Text = "Лицензия";
             // 
+            // открытьПапкуДанныхПрограммыToolStripMenuItem
+            // 
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Name = "открытьПапкуДанныхПрограммыToolStripMenuItem";
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Text = "Открыть папку данных программы";
+            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -337,7 +343,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 13);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Базы данных событий v. 1.1.2";
+            this.textBox1.Text = "Базы данных событий v. 1.1.4";
             // 
             // viewEmployeeMenuStrip
             // 
@@ -358,12 +364,6 @@
             this.viewAllTool.Name = "viewAllTool";
             this.viewAllTool.Size = new System.Drawing.Size(231, 22);
             this.viewAllTool.Text = "Просмотр всех сотрудников";
-            // 
-            // открытьПапкуДанныхПрограммыToolStripMenuItem
-            // 
-            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Name = "открытьПапкуДанныхПрограммыToolStripMenuItem";
-            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.открытьПапкуДанныхПрограммыToolStripMenuItem.Text = "Открыть папку данных программы";
             // 
             // EventsManagement
             // 

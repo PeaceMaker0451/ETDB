@@ -127,11 +127,17 @@ namespace ETDBs
             добавитьДопПолеToolStripMenuItem.Click += AddAttributeButton_Click;
             обновитьToolStripMenuItem.Click += (s,e) => RefreshTable();
 
-            searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text;  SetEmployeesTable(); };
+            searchTextBox.Leave += (s, e) => { searchText = searchTextBox.Text;  SetEmployeesTable(); };
 
             FillFilters();
             RefreshTable();
             Program.SetFormSize(this);
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, employeesTable, new object[] { true });
         }
 
         private void EditJobTitlesButton_Click(object sender, EventArgs e)
@@ -251,7 +257,7 @@ namespace ETDBs
 
             employeesTable.DataSource = TablesTools.SearchInDataTable(TablesTools.FilterDataTable(TablesTools.FilterDataTable(employeesData, titleFilterText, "JobTitle"), statusFilterText,"Status"), searchText);
             //employeesTable.ReadOnly = true;
-            employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             employeesTable.Columns["EmployeeID"].Visible = false;
             employeesTable.Columns["FullName"].DisplayIndex = 1;
             employeesTable.Columns["FullName"].HeaderText = "ФИО";

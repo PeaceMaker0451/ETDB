@@ -26,6 +26,7 @@ namespace ETDBs
         private DataTable employeesData;
         private DataTable filteredEmployeesData;
         private string searchText = "";
+        private string searchText2 = "";
         private string statusFilterText = "";
         private string titleFilterText = "";
 
@@ -54,8 +55,8 @@ namespace ETDBs
 
             configMenuItem.Click += (s, e) => { this.DialogResult = DialogResult.Retry; this.Close(); };
             
-            refreshButton.Click += (s, e) => RefreshTable();
-            refreshMenuItem.Click += (s, e) => RefreshTable();
+            refreshButton.Click += (s, e) => RefreshTableAsync();
+            refreshMenuItem.Click += (s, e) => RefreshTableAsync();
             exportEventsTableButton.Click += ExportEventsTableButton_Click;
             exportEventsTableMenuItem.Click += ExportEventsTableButton_Click;
             exportEmployeesTableButton.Click += ExportEmployeesTableButton_Click;
@@ -115,10 +116,11 @@ namespace ETDBs
                 new TemplateDocumentExport(TagExtractor.ExtractTagsFromDataGridView(employeesTable, "SelectCheckBox")).ShowDialog();
             };
 
-            searchTextBox.TextChanged += (s, e) => { searchText = searchTextBox.Text; RefreshTableAsync(); };
-            RefreshTable();
+            searchTextBox.Leave += (s, e) => { searchText = searchTextBox.Text; RefreshTableAsync(); };
+            searchBox2.Leave += (s, e) => { searchText2 = searchBox2.Text; RefreshTableAsync(); };
+            RefreshTableAsync();
 
-            if(!isSubWindow)
+            if (!isSubWindow)
             {
                 if (config.notifyWhenProgramIsNotHided)
                     timer = new System.Threading.Timer(TimerCallback, null, 0, 60000 * config.notificationInterval);
@@ -138,6 +140,18 @@ namespace ETDBs
             
 
             Program.SetFormSize(this);
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, employeesTable, new object[] { true });
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, eventsTable, new object[] { true });
         }
 
         private void ExportEmployeesTableButton_Click(object sender, EventArgs e)
@@ -189,11 +203,11 @@ namespace ETDBs
 
             if (this.InvokeRequired)
             {
-                this.BeginInvoke((MethodInvoker)(async () => RefreshTable()));
+                this.BeginInvoke((MethodInvoker)(async () => await RefreshTableAsync()));
             }
             else
             {
-                RefreshTable();
+                RefreshTableAsync();
             }
 
             NotifyAboutDeadLines();
@@ -265,22 +279,6 @@ namespace ETDBs
             TablesTools.NotifyEvents(eventsTable, config.maxDaysToNotifyAboutEvent, config.simplifyNotifications, notifyIcon1);
         }
 
-        public void RefreshTable()
-        {
-            try
-            {
-                UpdateEmployeesTable();
-                UpdateEventsTable();
-            }
-            catch(Exception ex)
-            {
-                if(config.notificationLevel > 1)
-                {
-                    MessageBox.Show($"Ошибка обновления таблиц - {ex}");
-                }
-            } 
-        }
-
         public async Task RefreshTableAsync()
         {
             try
@@ -296,6 +294,7 @@ namespace ETDBs
                     MessageBox.Show($"Ошибка обращения к интерфейсу - {ex}");
                 }
             }
+
             try
             {
                 await UpdateEmployeesTable();
@@ -308,6 +307,7 @@ namespace ETDBs
                     MessageBox.Show($"Ошибка обновления таблиц - {ex}");
                 }
             }
+
             try
             {
                 refreshBar.Value = 100;
@@ -347,8 +347,8 @@ namespace ETDBs
             statusFilter.SelectedIndex = 0;
             titleFilter.SelectedIndex = 0;
 
-            statusFilter.SelectedIndexChanged += (s, e) => { if (statusFilter.SelectedIndex == 0) statusFilterText = ""; else statusFilterText = statusFilter.Text; RefreshTable(); };
-            titleFilter.SelectedIndexChanged += (s, e) => { if (titleFilter.SelectedIndex == 0) titleFilterText = ""; else titleFilterText = titleFilter.Text; RefreshTable(); };
+            statusFilter.SelectedIndexChanged += (s, e) => { if (statusFilter.SelectedIndex == 0) statusFilterText = ""; else statusFilterText = statusFilter.Text; RefreshTableAsync(); };
+            titleFilter.SelectedIndexChanged += (s, e) => { if (titleFilter.SelectedIndex == 0) titleFilterText = ""; else titleFilterText = titleFilter.Text; RefreshTableAsync(); };
         }
 
         private Task UpdateEmployeesTable()
@@ -378,9 +378,9 @@ namespace ETDBs
             catch { }
             
             employeesTable.DataSource = filteredEmployeesData;
-            employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            
-            if(config.notificationLevel < 2)
+            employeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            if (config.notificationLevel < 2)
                 employeesTable.Columns["EmployeeID"].Visible = false;
 
             employeesTable.Columns["FullName"].DisplayIndex = 2;
@@ -518,11 +518,11 @@ namespace ETDBs
             eventsTable.Columns.Clear();
             eventsTable.AllowUserToAddRows = false;
 
-            eventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            eventsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             try
             {
-                TablesTools.CopyDataTableToDataGridView(dbManager.GetAllEmployeesEventsWithAttributes(filteredEmployeesData), eventsTable);
+                TablesTools.CopyDataTableToDataGridView(TablesTools.SearchInDataTable(dbManager.GetAllEmployeesEventsWithAttributes(filteredEmployeesData), searchText2), eventsTable);
             }
             catch { }
             
@@ -532,7 +532,7 @@ namespace ETDBs
                 Name = "DeadLine",
                 HeaderText = "DeadLine",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 1
             };
             eventsTable.Columns.Add(deadLineColumn);
@@ -542,7 +542,7 @@ namespace ETDBs
                 Name = "UrgencyLevel",
                 HeaderText = "Осталось дней",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 0
             };
             eventsTable.Columns.Add(urgencyColumn);
@@ -553,7 +553,7 @@ namespace ETDBs
                 HeaderText = "Дата",
                 ValueType = typeof(DateTime),
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 5
             };
             eventsTable.Columns.Add(nextDate);
@@ -563,7 +563,7 @@ namespace ETDBs
                 Name = "PeriodicityText",
                 HeaderText = "Периодичность",
                 ReadOnly = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
                 DisplayIndex = 5
             };
             eventsTable.Columns.Add(PeriodicityText);

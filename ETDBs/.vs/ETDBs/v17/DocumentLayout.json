@@ -3,38 +3,47 @@
   "WorkspaceRootPath": "D:\\Projs\\Git\\ETDBs\\ETDBs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ETDBs||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\editemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\editemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\editemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\editemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsplanning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\employeesmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ETDBs||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|d:\\projs\\git\\etdbs\\etdbs\\etdbs\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\eventsmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\tablestools.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\tablestools.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|D:\\Projs\\Git\\ETDBs\\ETDBs\\etdbs\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82822BB9-D8FB-46AE-B920-1A431EA8AD6E}|ETDBs\\ETDBs.csproj|solutionrelative:etdbs\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,7 +53,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 197,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,79 +61,109 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "EmployeesManagement.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs",
+              "RelativeDocumentMoniker": "ETDBs\\EmployeesManagement.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs*",
+              "RelativeToolTip": "ETDBs\\EmployeesManagement.cs*",
+              "ViewState": "AgIAAIoBAAAAAAAAAAAUwI0BAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T10:37:38.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EditEmployee.cs",
+              "RelativeDocumentMoniker": "ETDBs\\EditEmployee.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EditEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "ETDBs\\EditEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T05:16:51.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditEmployee.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EditEmployee.cs",
+              "RelativeDocumentMoniker": "ETDBs\\EditEmployee.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EditEmployee.cs",
+              "RelativeToolTip": "ETDBs\\EditEmployee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T05:16:49.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EventsPlanning.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
+              "RelativeDocumentMoniker": "ETDBs\\EventsPlanning.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
+              "RelativeToolTip": "ETDBs\\EventsPlanning.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAgwHoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T05:09:05.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ETDBs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ETDBs.csproj",
               "RelativeDocumentMoniker": "ETDBs\\ETDBs.csproj",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\ETDBs.csproj*",
               "RelativeToolTip": "ETDBs\\ETDBs.csproj*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-03T04:38:05.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:50:54.156Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EventsPlanning.cs",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
-              "RelativeDocumentMoniker": "ETDBs\\EventsPlanning.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
-              "RelativeToolTip": "ETDBs\\EventsPlanning.cs",
-              "ViewState": "AgIAANoBAAAAAAAAAAAAwOEBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:32:55.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EmployeesManagement.cs",
+              "DocumentIndex": 0,
+              "Title": "EmployeesManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs",
               "RelativeDocumentMoniker": "ETDBs\\EmployeesManagement.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs",
-              "RelativeToolTip": "ETDBs\\EmployeesManagement.cs",
-              "ViewState": "AgIAAKMBAAAAAAAAAAAgwMEBAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "RelativeToolTip": "ETDBs\\EmployeesManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:32:40.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:50:44.759Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "EventsManagement.cs",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsManagement.cs",
               "RelativeDocumentMoniker": "ETDBs\\EventsManagement.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsManagement.cs",
               "RelativeToolTip": "ETDBs\\EventsManagement.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAQwDEAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAqwFABAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:32:33.231Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:35:06.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\Program.cs",
-              "RelativeDocumentMoniker": "ETDBs\\Program.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\Program.cs",
-              "RelativeToolTip": "ETDBs\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "TablesTools.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TablesTools.cs",
+              "RelativeDocumentMoniker": "ETDBs\\TablesTools.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\TablesTools.cs",
+              "RelativeToolTip": "ETDBs\\TablesTools.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAAKwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:31:30.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T07:47:57.803Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "EventsPlanning.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs",
               "RelativeDocumentMoniker": "ETDBs\\EventsPlanning.cs",
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsPlanning.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "ETDBs\\EventsPlanning.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:30:17.778Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-01-24T07:32:25.946Z"
             },
             {
               "$type": "Document",
@@ -135,20 +174,19 @@
               "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EventsManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "ETDBs\\EventsManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:30:12.277Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-01-24T07:32:19.847Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EmployeesManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs",
-              "RelativeDocumentMoniker": "ETDBs\\EmployeesManagement.cs",
-              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\EmployeesManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "ETDBs\\EmployeesManagement.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentIndex": 10,
+              "Title": "DBManager.cs",
+              "DocumentMoniker": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DBManager.cs",
+              "RelativeDocumentMoniker": "ETDBs\\DBManager.cs",
+              "ToolTip": "D:\\Projs\\Git\\ETDBs\\ETDBs\\ETDBs\\DBManager.cs",
+              "RelativeToolTip": "ETDBs\\DBManager.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwDcAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T04:29:37.653Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2024-12-18T06:42:59.228Z"
             }
           ]
         },

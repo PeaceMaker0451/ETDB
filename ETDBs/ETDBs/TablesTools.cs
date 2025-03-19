@@ -160,20 +160,20 @@ namespace ETDBs
 
         public static void CopyDataTableToDataGridView(DataTable table, DataGridView dataGridView)
         {
-            // Очищаем DataGridView перед заполнением
             dataGridView.Columns.Clear();
             dataGridView.Rows.Clear();
 
-            // Создаем столбцы в DataGridView на основе DataTable
+            DataTable newTable = new DataTable();
+
             foreach (DataColumn column in table.Columns)
             {
                 dataGridView.Columns.Add(column.ColumnName, column.ColumnName);
+                //newTable.Columns.Add(column.ColumnName, column.ColumnName);
             }
 
-            // Добавляем строки в DataGridView
             foreach (DataRow row in table.Rows)
             {
-                var rowData = row.ItemArray; // Преобразуем DataRow в массив объектов
+                var rowData = row.ItemArray;
                 dataGridView.Rows.Add(rowData);
             }
         }
@@ -185,10 +185,8 @@ namespace ETDBs
 
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                // Проверка на пустую строку (возможно, добавлена вручную пользователем в DataGridView)
                 if (row.IsNewRow) continue;
 
-                // Получение значения колонки DeadLine и преобразование его в число
                 if (int.TryParse(row.Cells["DeadLine"].Value?.ToString(), out int daysLeft))
                 {
                     if (daysLeft <= daysThreshold) // Если дней осталось меньше или равно порогу
@@ -204,7 +202,6 @@ namespace ETDBs
                         {
                            
 
-                            // Формирование текста уведомления
                             string message = $"Событие: {eventName}\n" +
                                              $"Сотрудник: {fullName}\n" +
                                              $"Должность: {jobTitle}\n" +
@@ -212,7 +209,6 @@ namespace ETDBs
                                              $"Периодичность: {periodicityText}\n" +
                                              $"Осталось дней: {daysLeft}";
 
-                            // Показ MessageBox с уведомлением
                             MessageBox.Show(message, "Уведомление о событии", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         

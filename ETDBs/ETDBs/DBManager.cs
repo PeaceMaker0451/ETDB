@@ -681,7 +681,7 @@ WHEN NOT MATCHED THEN
 
                 string attributeValue = row[column]?.ToString() ?? string.Empty;
 
-                if (!string.IsNullOrEmpty(attributeValue))
+                if (attributeValue != null)
                 {
                     AddOrUpdateEmployeeAttribute(employeeId, attributeName, attributeValue);
                 }
